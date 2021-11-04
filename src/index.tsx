@@ -2,7 +2,7 @@ import React from "react";
 
 import reportWebVitals from "./reportWebVitals";
 import { setupProject } from "./project-setup";
-import App from "./App";
+import App from "./pages/";
 import "./index.css";
 
 // Renders the web-app/extension content to DOM.

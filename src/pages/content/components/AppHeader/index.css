@@ -1,0 +1,61 @@
+.padella {
+  height: auto;
+  position: absolute;
+  top: 0;
+  width: 430px;
+  left: -90px;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in;
+  opacity: 0;
+}
+
+.aura {
+  width: auto;
+  height: 150px;
+  position: absolute;
+  top: 27px;
+  left: 88px;
+}
+
+.arancina {
+  width: 80%;
+  left: 10%;
+  height: auto;
+  position: absolute;
+  top: 30px;
+}
+
+.animation-wrapper:hover .padella {
+  opacity: 1;
+  transform: translateX(10px) rotate(-5deg);
+}
+
+/* Arancina animation */
+@keyframes arancina-body {
+  0% {
+    transform: rotate(360deg)
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.arancina .arancina-body {
+  box-shadow: 0 0 50px -4px #ffecd2;
+}
+
+.arancina .arancina-body,
+.arancina .crumb {
+  animation-name: arancina-body;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 87% 47%;
+}
+
+.arancina .arancina-body {
+  animation-duration: 80s;
+}
+
+.arancina .crumb {
+  animation-duration: 35s;
+}
+/* End Arancina animation */

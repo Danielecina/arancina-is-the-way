@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "Create React Chrome Extension - TypeScript",
-  "version": "0.1.0",
-  "description": "A lightweight boilerplate for building chrome extensions with React, TypeScript and Webpack.",
-  "author": "Jakub Pixochi Kozak",
+  "name": "Arancina is the only way",
+  "version": "1.0.0",
+  "description": "An auto dom fixer for specific arancina words",
+  "author": "Daniele Cinà",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -16,5 +16,9 @@
       "css": ["main.css"]
     }
   ],
-  "web_accessible_resources": ["static/*"]
+  "web_accessible_resources": ["static/*"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
 }
