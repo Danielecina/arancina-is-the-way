@@ -1,8 +1,8 @@
 import React from "react"
 
-import {ReactComponent as Padella} from "../../svgs/padella.svg"
-import {ReactComponent as AuraEffect} from "../../svgs/aura.svg"
-import {ReactComponent as Logo} from "../../svgs/arancina.svg"
+import {ReactComponent as Padella} from "../../../assets/svgs/padella.svg"
+import {ReactComponent as AuraEffect} from "../../../assets/svgs/aura.svg"
+import {ReactComponent as Logo} from "../../../assets/svgs/arancina.svg"
 
 import './index.css'
 

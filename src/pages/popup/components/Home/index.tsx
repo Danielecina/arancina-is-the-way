@@ -2,34 +2,32 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {Button} from "primereact/button";
 import {InputSwitch as Switch} from "primereact/inputswitch";
 
-import {fixWordsMessage, toggleWatchModeMessage} from "../../actions";
-import {getCurrentTabUId} from "../../chrome/utils";
-import useStore from "../../hooks/useStore";
+// import {fixWordsMessage, toggleWatchModeMessage} from "../../../../store/actions";
+import {getCurrentTabUId} from "../../../../lib/chromeUtils";
 
 import './index.css'
 
 const Home = () => {
-  const {store, setStoreState} = useStore()
   // const [watchModeResponse, setWatchModeResponse] = useState(null)
-  const [enableWatchMode, setEnableWatchMode] = useState<boolean>(store?.watchMode)
+  // const [enableWatchMode, setEnableWatchMode] = useState<boolean>(store?.watchMode)
   
   useEffect(() => {
-    setEnableWatchMode(store?.watchMode)
-  }, [store])
+    // setEnableWatchMode(store?.watchMode)
+  }, [])
   
   const sendTestMessage = useCallback(() => {
     getCurrentTabUId((id) => {
-      id && chrome.tabs.sendMessage(id, fixWordsMessage())
+      // id && chrome.tabs.sendMessage(id, fixWordsMessage())
     })
   }, [])
   
   const setWatchMode = useCallback((isEnabled) => {
     getCurrentTabUId((id) => {
-      id && chrome.tabs.sendMessage(id, toggleWatchModeMessage({watchMode: isEnabled}))
+      // id && chrome.tabs.sendMessage(id, toggleWatchModeMessage({watchMode: isEnabled}))
     })
     
-    setEnableWatchMode(isEnabled)
-    setStoreState({watchMode: isEnabled})
+    // setEnableWatchMode(isEnabled)
+    // setStoreState({watchMode: isEnabled})
   }, [])
   
   return (
@@ -42,7 +40,7 @@ const Home = () => {
       <div className={'home-row'}>
         <div className={'title'}>{'Auto replacer'}</div>
         <Switch
-          checked={enableWatchMode}
+          // checked={enableWatchMode}
           onChange={(e) => setWatchMode(e.value)}
         />
       </div>

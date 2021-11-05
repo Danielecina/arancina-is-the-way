@@ -22,6 +22,9 @@
     "noImplicitAny": false,
   },
   "include": [
-    "src"
+    "src",
+  ],
+  "exclude": [
+    "src/__mocks__",
   ]
 }

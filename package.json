@@ -3,27 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "primereact": "^6.6.0",
+    "primeicons": "^4.1.0",
+    "lodash.debounce": "^4.0.8",
+    "react": "^17.0.1",
+    "react-app-rewired": "2.1.6",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "4.0.1",
+    "react-transition-group": "^4.4.2",
+    "rxjs": "^7.4.0",
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/chrome": "0.0.126",
+    "@types/chrome": "0.0.163",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "filemanager-webpack-plugin": "3.0.0-beta.0",
-    "react": "^17.0.1",
-    "react-app-rewired": "2.1.6",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.1",
-    "rxjs": "^7.4.0",
-    "typescript": "4.1.2",
-    "web-vitals": "^0.2.4"
+    "typescript": "4.1.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build:extension": "REACT_APP_BUILD_TARGET=extension react-app-rewired build",
-    "build:web-app": "REACT_APP_BUILD_TARGET=web-app react-app-rewired build",
+    "build": "INLINE_RUNTIME_CHUNK=false react-app-rewired build",
     "test": "react-app-rewired test"
   },
   "eslintConfig": {
