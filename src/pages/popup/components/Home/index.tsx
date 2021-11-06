@@ -1,33 +1,17 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Button} from "primereact/button";
+import PropTypes from "prop-types"
 import {InputSwitch as Switch} from "primereact/inputswitch";
-
 // import {fixWordsMessage, toggleWatchModeMessage} from "../../../../store/actions";
-import {getCurrentTabUId} from "../../../../lib/chromeUtils";
 
+import {getCurrentTabUId} from "../../../../lib/chromeUtils";
 import './index.css'
 
-const Home = () => {
-  // const [watchModeResponse, setWatchModeResponse] = useState(null)
-  // const [enableWatchMode, setEnableWatchMode] = useState<boolean>(store?.watchMode)
-  
-  useEffect(() => {
-    // setEnableWatchMode(store?.watchMode)
-  }, [])
-  
+const Home = ({watchMode, onChangeWatchMode}) => {
   const sendTestMessage = useCallback(() => {
     getCurrentTabUId((id) => {
       // id && chrome.tabs.sendMessage(id, fixWordsMessage())
     })
-  }, [])
-  
-  const setWatchMode = useCallback((isEnabled) => {
-    getCurrentTabUId((id) => {
-      // id && chrome.tabs.sendMessage(id, toggleWatchModeMessage({watchMode: isEnabled}))
-    })
-    
-    // setEnableWatchMode(isEnabled)
-    // setStoreState({watchMode: isEnabled})
   }, [])
   
   return (
@@ -40,17 +24,17 @@ const Home = () => {
       <div className={'home-row'}>
         <div className={'title'}>{'Auto replacer'}</div>
         <Switch
-          // checked={enableWatchMode}
-          onChange={(e) => setWatchMode(e.value)}
+          checked={watchMode}
+          onChange={(e) => onChangeWatchMode(e.value)}
         />
       </div>
       <small>{'If activated, this feature will take care of replacing all words automatically'}</small>
-      {/*<div>*/}
-      {/*  Response from content:*/}
-      {/*  <p>{callbackResponse}</p>*/}
-      {/*</div>*/}
     </main>
   );
+}
+Home.propTypes = {
+  watchMode: PropTypes.bool,
+  onChangeWatchMode: PropTypes.func.isRequired
 }
 
 export default Home;

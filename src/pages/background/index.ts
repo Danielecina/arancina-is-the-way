@@ -6,24 +6,19 @@ import {getCurrentTabUId} from '../../lib/chromeUtils'
 import {Sender} from "../../types"
 import {DEBOUNCE_TIME} from '../../constants'
 
-chrome.runtime.onInstalled.addListener((details) => {
-  alert("[onInstalled] success")
-  
-  chrome.storage.sync.get(null, store => {
-    console.log('chrome store', store)
-    getCurrentTabUId((id) => {
-      console.log('chrome tab id', id)
-      if (!id) return
-      const storageInstance = new RxJsStore(reducers, {pippo: 'test'})
-      console.log('store instance', storageInstance)
+const CHANGE_PAGE = 'CHANGE_PAGE'
 
-      chrome.tabs.sendMessage(id, {
-        from: Sender.Background,
-        type: START_UP_STORE,
-        payload: storageInstance
-      })
-    })
-  })
+chrome.runtime.onInstalled.addListener(({
+  reason, previousVersion, id
+}: {
+  reason: string,
+  previousVersion?: string | undefined,
+  id?: string | undefined
+}) => {
+  alert(`
+    [Background] [onInstalled]
+    ${reason} ${previousVersion} ${id}
+  `)
 })
 
 // when user switch tab, trigger this background event
@@ -38,13 +33,13 @@ chrome.webNavigation.onDOMContentLoaded.addListener(debounce(({tabId}) => {
 
 function watchModeMessage(store: State, tabId: number) {
   console.log('get storage to check watchMode', store)
-  // if (store.watchMode) {
-  chrome.tabs.sendMessage(tabId, {
-    from: Sender.Background,
-    type: START_UP_STORE,
-    payload: {watchModeMessage: 'watchModeMessage'}
-  })
-  // }
+  if (store.watchMode) {
+    // chrome.tabs.sendMessage(tabId, {
+    //   from: Sender.BACKGROUND,
+    //   type: CHANGE_PAGE,
+    //   payload: {watchModeMessage: 'watchModeMessage'}
+    // })
+  }
 }
 
 export default {};
