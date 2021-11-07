@@ -14,6 +14,8 @@
   position: absolute;
   top: 27px;
   left: 88px;
+  opacity: 0;
+  transition: opacity 200ms ease;
 }
 
 .arancina {
@@ -22,12 +24,25 @@
   height: auto;
   position: absolute;
   top: 30px;
+  transform: scale(1.2);
+  transition: transform 300ms ease;
 }
 
+/* Arancina animation on-fire */
 .padella.on-fire {
   opacity: 1;
   transform: translateX(10px) rotate(-5deg);
 }
+
+.arancina.on-fire {
+  transform: scale(1) rotate(-25deg);
+}
+
+.aura.on-fire {
+  opacity: 1
+}
+/* End Arancina animation on-fire */
+
 
 /* Arancina animation */
 @keyframes arancina-body {
@@ -39,6 +54,7 @@
   }
 }
 
+/* Arancina SVG styles */
 .arancina .arancina-body {
   box-shadow: 0 0 50px -4px #ffecd2;
 }

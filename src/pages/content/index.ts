@@ -1,12 +1,13 @@
 /* Content is the unique file that have access to dom element */
-import {ChromeMessage, Sender} from "../../types";
+import {ChromeMessage} from "../../types"
+import {TOGGLE_WATCH_MODE, SUBSTITUTE_WORDS} from "../../store/actions/substitution"
 
 import mutationObserver from '../../lib/mutationObserver'
 import wordReplacerAlgorithm from '../../lib/algorithm'
 
 interface Result {
   payload?: any
-  message?: any
+  message?: string
 }
 
 function appEventHandler(
@@ -16,7 +17,7 @@ function appEventHandler(
 ) {
   const {payload = {}, type} = message
   switch (type) {
-    case 'TOGGLE_WATCH_MODE': {
+    case TOGGLE_WATCH_MODE: {
       const {watchMode: isEnabled} = payload
       try {
         const payload = mutationObserver(isEnabled)
@@ -26,7 +27,8 @@ function appEventHandler(
       }
       break
     }
-    case 'FIX_WORDS': {
+    case SUBSTITUTE_WORDS: {
+      console.log('[SUBSTITUTE_WORDS CONTENT REDUCER]')
       try {
         const payload = wordReplacerAlgorithm()
         response({payload, message: 'fix words completed'})
@@ -42,5 +44,4 @@ function appEventHandler(
   }
 }
 
-console.log('[CONTENT.JS] BASE')
 chrome.runtime.onMessage.addListener(appEventHandler)

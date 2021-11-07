@@ -5,7 +5,7 @@ import Home from './components/Home'
 import AppHeader from "./components/AppHeader"
 import {useStore} from "../../store/RxJsStore";
 
-import {toggleWatchModeMessage} from "../../store/actions/substitution"
+import {toggleWatchModeMessage, substituteWords} from "../../store/actions/substitution"
 
 import './index.css'
 
@@ -18,11 +18,21 @@ const App = () => {
     dispatch(toggleWatchModeMessage(value))
   }, [dispatch])
   
+  const onSubstituteWords = useCallback(() => {
+    dispatch(substituteWords())
+  }, [dispatch])
+  
   return (
     <div className={'app'}>
       <AppHeader watchMode={substitution?.watchMode} />
       <Switch>
-        <Route render={() => <Home watchMode={substitution?.watchMode} onChangeWatchMode={onChangeWatchMode} />} />
+        <Route render={() => (
+          <Home
+            watchMode={substitution?.watchMode}
+            onChangeWatchMode={onChangeWatchMode}
+            onSubstituteWords={onSubstituteWords}
+          />
+        )} />
       </Switch>
     </div>
   )

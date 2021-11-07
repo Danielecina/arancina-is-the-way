@@ -12,8 +12,6 @@ const substitution: Reducer = (state = initialState, action: Action) => {
     }
     case TOGGLE_WATCH_MODE: {
       const {payload} = action
-      console.log('TOGGLE_WATCH_MODE', payload)
-      
       return {
         ...state,
         watchMode: payload.watchMode

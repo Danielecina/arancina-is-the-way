@@ -25,15 +25,16 @@ export interface Algorithm {
 }
 
 export default function algorithm (element?: Node): Algorithm  {
+  console.log('[START Algorithm]')
   if (element) {
-    const errorsCount = countErrorsOnPage(element)
+    let errorsCount = countErrorsOnPage(element)
     if (errorsCount === 0) {
       return {
         errorsCount
       }
     }
-
     findElementsWithWrongWordAndReplace(element)
+    return {errorsCount}
   }
   
   const rootElement = document.querySelector('body')
@@ -45,6 +46,7 @@ export default function algorithm (element?: Node): Algorithm  {
   }
   
   const errorsCount = countErrorsOnPage(rootElement)
+  console.log('[ERRORS COUNT]', errorsCount)
   findElementsWithWrongWordAndReplace(rootElement)
 
   return {

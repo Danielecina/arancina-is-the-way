@@ -34,14 +34,10 @@ function watchModeMessage(store: State) {
   if (!store.substitution?.watchMode) return
   console.log('get storage to check watchMode', store.substitution?.watchMode)
 
-  sendMessage({
+  const response = sendMessage({
     from: Sender.BACKGROUND,
     type: TOGGLE_WATCH_MODE,
     payload: {watchMode: store.substitution?.watchMode},
-  }, (data) => {
-    console.log('[sendMessage response callback background]', data)
-    // set del count degli errori sullo store...
-    // serve per la gamification
   })
 }
 
