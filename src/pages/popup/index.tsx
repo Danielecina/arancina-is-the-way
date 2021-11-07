@@ -16,11 +16,11 @@ const App = () => {
 
   const onChangeWatchMode = useCallback((value) => {
     dispatch(toggleWatchModeMessage(value))
-  }, [storeState, dispatch])
+  }, [dispatch])
   
   return (
     <div className={'app'}>
-      <AppHeader />
+      <AppHeader watchMode={substitution?.watchMode} />
       <Switch>
         <Route render={() => <Home watchMode={substitution?.watchMode} onChangeWatchMode={onChangeWatchMode} />} />
       </Switch>

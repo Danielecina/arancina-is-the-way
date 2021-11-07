@@ -24,7 +24,7 @@
   top: 30px;
 }
 
-.animation-wrapper:hover .padella {
+.padella.on-fire {
   opacity: 1;
   transform: translateX(10px) rotate(-5deg);
 }

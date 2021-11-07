@@ -1,5 +1,8 @@
 import debounce from 'lodash/debounce'
 
+import wordReplacerAlgorithm, {Algorithm} from './algorithm'
+import {DEBOUNCE_TIME} from "../constants"
+
 let listener: MutationObserver
 
 type Callback = (changedNode?: any) => void
@@ -19,38 +22,37 @@ function unsubscribeListener() {
   return
 }
 
-function mutationRecord (mutation: MutationRecord, callbackIsEnabled: Callback) {
+function mutationRecord (mutation: MutationRecord) {
   console.log('mutation observer see a mutation...', mutation)
   
   if (mutation.type === MUTATION_OBSERVER_CHARACTER_DATA) {
-    callbackIsEnabled(mutation.target)
+    wordReplacerAlgorithm(mutation.target)
   } else if (mutation.type === MUTATION_OBSERVER_CHILD_LIST) {
     // monitor the target node (and, if subtree is true, its descendants)
     // for the addition of new child nodes or removal of existing child nodes
     const changedNode = mutation.addedNodes[0]
-    callbackIsEnabled(changedNode)
+    wordReplacerAlgorithm(changedNode)
   }
 }
 
-export default function mutationObserver(isEnabled: boolean, callbackIsEnabled: Callback): undefined {
+export default function mutationObserver(isEnabled: boolean): Algorithm | undefined {
   if (!isEnabled) {
     unsubscribeListener()
     return
   }
   
-  console.log('invoke callback')
-  callbackIsEnabled()
+  let {errorsCount} = wordReplacerAlgorithm()
   
   if (listener) {
     console.log('listener is already registered', listener)
-    return
+    return {errorsCount}
   }
   
   console.log('subscribe listener')
   // each tab page need to set a mutation observer to work
   listener = new MutationObserver(debounce((mutations: MutationRecord[]) => {
-    mutations.forEach(mutation => mutationRecord(mutation, callbackIsEnabled))
-  }, 300))
+    mutations.forEach(mutationRecord)
+  }, DEBOUNCE_TIME))
   
   listener.observe(document.body, {
     childList: true,

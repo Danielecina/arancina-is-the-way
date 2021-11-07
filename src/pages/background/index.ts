@@ -1,14 +1,10 @@
 import debounce from 'lodash/debounce'
 
-import reducers from '../../store/reducers'
-import RxJsStore, {State, START_UP_STORE} from '../../store/RxJsStore'
-import {getCurrentTabUId, sendMessage} from '../../lib/chromeUtils'
-import {ChromeMessage, Sender} from "../../types"
-import mutationObserver from '../../lib/mutationObserver'
-import wordReplacerAlgorithm from '../../lib/algorithm'
+import {State} from '../../store/RxJsStore'
+import {sendMessage} from '../../lib/chromeUtils'
+import {Sender} from "../../types"
 import {TOGGLE_WATCH_MODE} from "../../store/actions/substitution";
 
-const ON_BROWSER_PAGE_CHANGE = 'ON_BROWSER_PAGE_CHANGE'
 const DEBOUNCE_TIME = 300
 
 chrome.runtime.onInstalled.addListener(({
@@ -19,7 +15,7 @@ chrome.runtime.onInstalled.addListener(({
   id?: string | undefined
 }) => {
   alert(`
-    [Background] [onInstalled]
+    [Application installed]
     ${reason} ${previousVersion} ${id}
   `)
 })
@@ -44,6 +40,8 @@ function watchModeMessage(store: State) {
     payload: {watchMode: store.substitution?.watchMode},
   }, (data) => {
     console.log('[sendMessage response callback background]', data)
+    // set del count degli errori sullo store...
+    // serve per la gamification
   })
 }
 

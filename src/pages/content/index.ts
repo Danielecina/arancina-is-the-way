@@ -15,13 +15,12 @@ function appEventHandler(
   response: (result?: Result) => void
 ) {
   const {payload = {}, type} = message
-  console.log('[EVENT]', message)
   switch (type) {
     case 'TOGGLE_WATCH_MODE': {
       const {watchMode: isEnabled} = payload
       try {
-        mutationObserver(isEnabled, wordReplacerAlgorithm)
-        response({message: `watch mode ${isEnabled ? 'starting' : 'disabled'}`})
+        const payload = mutationObserver(isEnabled)
+        response({payload, message: `watch mode ${isEnabled ? 'starting' : 'disabled'}`})
       } catch (error) {
         response({message: `watch mode error: ${error}`})
       }
