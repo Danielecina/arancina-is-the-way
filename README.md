@@ -107,6 +107,15 @@ Enjoy, install and spread with the hope that this word will be corrected
 
 Add some photo to explain the application architecture.
 
+Come passo l'istanza dello store in giro?
+RxJsStore ---> dispatch with action ---> reducer save to chrome store
+|
+|-- React js 
+|    
+|-- Content js 
+|    
++-- Background js
+
 #### Chrome
 
 Manifest.json is a most important part of application configuration. This file have a configuration of chrome browser.

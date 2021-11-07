@@ -1,3 +1,5 @@
+import {ChromeMessage, ChromeResponse} from '../types'
+
 export const getCurrentTabUrl = (callback: (url: string | undefined) => void): void => {
     const queryInfo = {active: true, lastFocusedWindow: true};
 
@@ -11,6 +13,12 @@ export const getCurrentTabUId = (callback: (url: number | undefined) => void): v
     chrome.tabs && chrome.tabs.query(queryInfo, tabs => {
         callback(tabs[0].id);
     });
+}
+
+export const sendMessage = (message: ChromeMessage, responseCallback?: ChromeResponse): void => {
+    getCurrentTabUId(tabId => {
+        tabId && chrome.tabs.sendMessage(tabId, message, {}, responseCallback)
+    })
 }
 
 

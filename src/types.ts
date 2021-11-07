@@ -10,6 +10,4 @@ export interface ChromeMessage {
     payload?: any
 }
 
-export interface Store {
-    watchMode: boolean
-}
+export type ChromeResponse = (data?: any) => void

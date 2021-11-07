@@ -4,7 +4,8 @@ import {Switch, Route} from "react-router-dom"
 import Home from './components/Home'
 import AppHeader from "./components/AppHeader"
 import {useStore} from "../../store/RxJsStore";
-import {TOGGLE_SUBSTITUTE_WATCH_MODE} from "../../store/actions/substitution"
+
+import {toggleWatchModeMessage} from "../../store/actions/substitution"
 
 import './index.css'
 
@@ -14,8 +15,7 @@ const App = () => {
   console.log('[RERENDER APP]', storeState)
 
   const onChangeWatchMode = useCallback((value) => {
-    
-    dispatch({type: TOGGLE_SUBSTITUTE_WATCH_MODE, payload: {watchMode: value}})
+    dispatch(toggleWatchModeMessage(value))
   }, [storeState, dispatch])
   
   return (

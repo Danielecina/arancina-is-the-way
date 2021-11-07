@@ -1,7 +1,10 @@
 import {useState, useEffect, useCallback} from "react"
 import {distinctUntilKeyChanged, pluck} from 'rxjs/operators'
 import {BehaviorSubject, Subscription, Observable} from 'rxjs'
+
 import reducers from "./reducers";
+import {getCurrentTabUId, sendMessage} from "../lib/chromeUtils"
+import {ChromeMessage, Sender} from "../types";
 
 export interface Action {
   type: string;
@@ -96,7 +99,16 @@ export function useStore (): UseStoreState {
     })
     return () => storeStateSubscription.unsubscribe()
   }, [storeInstance])
-
+  
+  useEffect(() => {
+    if (!storeInstance) return
+    console.log('[SEND MESSAGE TO OTHER FILES', storeInstance)
+    const message: ChromeMessage = {type: 'A_CASO', from: Sender.REACT}
+    sendMessage(message, (data) => {
+      console.log('[sendRuntimeMessage response callback]', data)
+    })
+  }, [storeInstance])
+  
   const dispatchNewStoreState = useCallback((action: Action) => {
     if (!storeInstance) return
     console.log('[DISPATCH ACTION]', action)

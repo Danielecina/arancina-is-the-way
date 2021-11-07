@@ -1,5 +1,5 @@
 import {Reducer, Action} from "../RxJsStore"
-import {SUBSTITUTE_WORDS, TOGGLE_SUBSTITUTE_WATCH_MODE} from '../actions/substitution'
+import {SUBSTITUTE_WORDS, TOGGLE_WATCH_MODE} from '../actions/substitution'
 
 const initialState = {
   watchMode: false
@@ -10,9 +10,9 @@ const substitution: Reducer = (state = initialState, action: Action) => {
     case SUBSTITUTE_WORDS: {
       return state
     }
-    case TOGGLE_SUBSTITUTE_WATCH_MODE: {
+    case TOGGLE_WATCH_MODE: {
       const {payload} = action
-      console.log('TOGGLE_SUBSTITUTE_WATCH_MODE', payload)
+      console.log('TOGGLE_WATCH_MODE', payload)
       
       return {
         ...state,
