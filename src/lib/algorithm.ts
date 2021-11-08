@@ -25,7 +25,6 @@ export interface Algorithm {
 }
 
 export default function algorithm (element?: Node): Algorithm  {
-  console.log('[START Algorithm]')
   if (element) {
     let errorsCount = countErrorsOnPage(element)
     if (errorsCount === 0) {

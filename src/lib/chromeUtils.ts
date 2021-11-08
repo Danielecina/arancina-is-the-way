@@ -8,6 +8,7 @@ export const getCurrentTabUrl = (callback: (url: string | undefined) => void): v
 }
 
 export const getCurrentTabUId = (callback: (url: number | undefined) => void): void => {
+  console.log('getCurrentTabUId')
   chrome.tabs && chrome.tabs.query(queryInfo, tabs => {
     const tabId = tabs[0] || {}
     callback(tabId.id);
@@ -17,8 +18,8 @@ export const getCurrentTabUId = (callback: (url: number | undefined) => void): v
 export const sendMessage = (message: ChromeMessage) => {
   let response
   getCurrentTabUId(tabId => {
-    console.log('sendMessage tabId', tabId)
-    tabId && chrome.tabs.sendMessage(
+    console.log('tabId', tabId)
+    tabId && chrome.tabs && chrome.tabs.sendMessage(
       tabId,
       message,
       {},

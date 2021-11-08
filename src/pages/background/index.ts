@@ -8,15 +8,19 @@ import {TOGGLE_WATCH_MODE} from "../../store/actions/substitution";
 const DEBOUNCE_TIME = 300
 
 chrome.runtime.onInstalled.addListener(({
-  reason, previousVersion, id
+  reason,
+  previousVersion,
+  id
 }: {
   reason: string,
   previousVersion?: string | undefined,
   id?: string | undefined
 }) => {
   alert(`
-    [Application installed]
-    ${reason} ${previousVersion} ${id}
+    [Application installed]:
+    ${reason};
+    ${previousVersion};
+    ${id};
   `)
 })
 
@@ -32,13 +36,16 @@ chrome.webNavigation.onDOMContentLoaded.addListener(debounce(({tabId}) => {
 
 function watchModeMessage(store: State) {
   if (!store.substitution?.watchMode) return
-  console.log('get storage to check watchMode', store.substitution?.watchMode)
-
+  console.log(
+    "watchModeMessage",
+    store.substitution?.watchMode
+  )
   const response = sendMessage({
     from: Sender.BACKGROUND,
     type: TOGGLE_WATCH_MODE,
     payload: {watchMode: store.substitution?.watchMode},
   })
+  console.log('response', response)
 }
 
 export default {};

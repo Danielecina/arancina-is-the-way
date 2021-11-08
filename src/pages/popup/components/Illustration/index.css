@@ -1,7 +1,11 @@
+.illustration-wrapper {
+  cursor: pointer;
+}
+
 .padella {
   height: auto;
   position: absolute;
-  top: 0;
+  top: 20px;
   width: 430px;
   left: -90px;
   transition: transform 200ms ease-in-out, opacity 200ms ease-in;
@@ -12,18 +16,18 @@
   width: auto;
   height: 150px;
   position: absolute;
-  top: 27px;
-  left: 88px;
+  top: 47px;
+  left: 63px;
   opacity: 0;
   transition: opacity 200ms ease;
 }
 
 .arancina {
   width: 80%;
-  left: 10%;
+  left: 5px;
   height: auto;
   position: absolute;
-  top: 30px;
+  top: 45px;
   transform: scale(1.2);
   transition: transform 300ms ease;
 }

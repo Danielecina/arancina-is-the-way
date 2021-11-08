@@ -14,6 +14,10 @@ export const substituteWords = () => {
 
 export const TOGGLE_WATCH_MODE: string = 'TOGGLE_WATCH_MODE'
 export const toggleWatchModeMessage = (watchMode: boolean) => {
+  sendMessage({
+    type: TOGGLE_WATCH_MODE,
+    from: Sender.REACT
+  })
   return {
     type: TOGGLE_WATCH_MODE,
     payload: {watchMode}

@@ -1,30 +1,15 @@
-import debounce from 'lodash/debounce'
-
-import wordReplacerAlgorithm, {Algorithm} from './algorithm'
-import {DEBOUNCE_TIME} from "../constants"
+import wordReplacerAlgorithm from './algorithm'
 
 let listener: MutationObserver
 
-type Callback = (changedNode?: any) => void
+export function unsubscribeListener() {
+  listener && listener.disconnect()
+  console.log('disconnected listener done')
+}
 
 const MUTATION_OBSERVER_CHARACTER_DATA = 'characterData'
 const MUTATION_OBSERVER_CHILD_LIST = 'childList'
-
-function unsubscribeListener() {
-  console.log('unsubscribe listener...')
-  if (listener) {
-    listener.disconnect()
-    console.log('disconnected listener done')
-    return
-  }
-  
-  console.log('No listener found')
-  return
-}
-
-function mutationRecord (mutation: MutationRecord) {
-  console.log('mutation observer see a mutation...', mutation)
-  
+export function mutationRecord (mutation: MutationRecord) {
   if (mutation.type === MUTATION_OBSERVER_CHARACTER_DATA) {
     wordReplacerAlgorithm(mutation.target)
   } else if (mutation.type === MUTATION_OBSERVER_CHILD_LIST) {
@@ -35,28 +20,24 @@ function mutationRecord (mutation: MutationRecord) {
   }
 }
 
-export default function mutationObserver(isEnabled: boolean): Algorithm | undefined {
-  if (!isEnabled) {
-    unsubscribeListener()
-    return
-  }
-  
-  let {errorsCount} = wordReplacerAlgorithm()
-  
-  if (listener) {
-    console.log('listener is already registered', listener)
-    return {errorsCount}
-  }
-  
-  console.log('subscribe listener')
-  // each tab page need to set a mutation observer to work
-  listener = new MutationObserver(debounce((mutations: MutationRecord[]) => {
+export function createListener() {
+  listener = new MutationObserver((mutations: MutationRecord[]) => {
     mutations.forEach(mutationRecord)
-  }, DEBOUNCE_TIME))
+  })
   
   listener.observe(document.body, {
     childList: true,
     characterData: true,
     subtree: true
   })
+}
+
+export default function mutationObserver(watchMode: boolean): undefined {
+  if (!watchMode) {
+    unsubscribeListener()
+    return
+  }
+  wordReplacerAlgorithm()
+  if (listener) return
+  createListener()
 }
