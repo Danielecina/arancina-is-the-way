@@ -13,11 +13,13 @@ import './index.css'
 const App = () => {
   const {storeState, dispatch} = useStore()
   const {substitution} = storeState
-  const onChangeWatchMode = useCallback((value) => {
-    dispatch(toggleWatchModeMessage(value))
+
+  const onChangeWatchMode = useCallback(async (value) => {
+    dispatch(await toggleWatchModeMessage(value))
   }, [dispatch])
-  const onSubstituteWords = useCallback(() => {
-    dispatch(substituteWords())
+
+  const onSubstituteWords = useCallback(async () => {
+    dispatch(await substituteWords())
   }, [dispatch])
   
   return (

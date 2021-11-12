@@ -4,7 +4,6 @@ let listener: MutationObserver
 
 export function unsubscribeListener() {
   listener && listener.disconnect()
-  console.log('disconnected listener done')
 }
 
 const MUTATION_OBSERVER_CHARACTER_DATA = 'characterData'

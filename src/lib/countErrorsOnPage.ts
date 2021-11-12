@@ -1,8 +1,7 @@
-import wordListToRewrite from "./wordListToRewrite";
+import wordListToRewrite from "./wordListToRewrite"
 
-export type ErrorsFound = number
-
-export default function countErrorsOnPage (element?: Node): ErrorsFound {
+export default function countErrorsOnPage (element?: Node) {
+  console.log("countErrorsOnPage starting", !element)
   let count = 0
   if (!element) {
     return count

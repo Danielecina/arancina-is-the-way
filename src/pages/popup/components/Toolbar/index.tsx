@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from "antd"
+import {Button, Tooltip} from "antd"
 import {TrophyOutlined} from '@ant-design/icons'
 
 import './index.css'
@@ -8,12 +8,20 @@ Toolbar.propTypes = {}
 export default function Toolbar () {
   return (
     <div className={'toolbar'}>
-      <Button
-        icon={<TrophyOutlined />}
-        shape={'circle'}
-        type={'primary'}
-        onClick={() => {}}
-      />
+      <Tooltip
+        color={'hsla(0,0%,100%,.2)'}
+        placement={'left'}
+        title={TooltipInfo}
+      >
+        <Button
+          icon={<TrophyOutlined />}
+          shape={'circle'}
+          type={'primary'}
+          onClick={() => {}}
+        />
+      </Tooltip>
     </div>
   );
 }
+
+const TooltipInfo = <span style={{fontWeight: 900}}>{'Coming soon'}</span>

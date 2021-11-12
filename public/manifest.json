@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Arancina is the only way",
   "version": "1.0.0",
   "description": "An auto dom fixer for specific arancina words",
@@ -16,12 +16,9 @@
     "webNavigation",
     "<all_urls>"
   ],
-  "web_accessible_resources": ["static/*"],
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js"
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -30,7 +27,7 @@
       "run_at": "document_end"
     }
   ],
-  "browser_action": {
+  "action": {
     "default_popup": "index.html",
     "default_title": "Arancina is the way"
   }

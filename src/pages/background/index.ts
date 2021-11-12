@@ -2,7 +2,6 @@ import debounce from 'lodash/debounce'
 
 import {State} from '../../store/RxJsStore'
 import {sendMessage} from '../../lib/chromeUtils'
-import {Sender} from "../../types"
 import {TOGGLE_WATCH_MODE} from "../../store/actions/substitution";
 
 const DEBOUNCE_TIME = 300
@@ -34,16 +33,12 @@ chrome.webNavigation.onDOMContentLoaded.addListener(debounce(({tabId}) => {
   chrome.storage.sync.get(null, watchModeMessage)
 }, DEBOUNCE_TIME))
 
-function watchModeMessage(store: State) {
-  if (!store.substitution?.watchMode) return
-  console.log(
-    "watchModeMessage",
-    store.substitution?.watchMode
-  )
-  const response = sendMessage({
-    from: Sender.BACKGROUND,
+async function watchModeMessage(store: State) {
+  if (!store?.substitution?.watchMode) return
+
+  const response = await sendMessage({
     type: TOGGLE_WATCH_MODE,
-    payload: {watchMode: store.substitution?.watchMode},
+    payload: {watchMode: store?.substitution?.watchMode},
   })
   console.log('response', response)
 }

@@ -24,7 +24,7 @@
 
 .arancina {
   width: 80%;
-  left: 5px;
+  left: 10%;
   height: auto;
   position: absolute;
   top: 45px;
@@ -39,7 +39,7 @@
 }
 
 .arancina.on-fire {
-  transform: scale(1) rotate(-25deg);
+  transform: scale(1) rotate(-25deg) translateX(-25px);
 }
 
 .aura.on-fire {

@@ -19,22 +19,18 @@ function appEventHandler(
   switch (type) {
     case TOGGLE_WATCH_MODE: {
       const {watchMode} = payload
-      console.log("[TOGGLE_WATCH_MODE REDUCER]", watchMode)
       try {
-        const payload = mutationObserver(watchMode)
-        console.log('mutationObserver', payload)
-        response({payload, message: `watch mode ${watchMode ? 'starting' : 'disabled'}`})
+        mutationObserver(watchMode)
+        response({message: `watch mode ${watchMode ? 'starting' : 'disabled'}`})
       } catch (error) {
         response({message: `watch mode error: ${error}`})
       }
       break
     }
     case SUBSTITUTE_WORDS: {
-      console.log('[SUBSTITUTE_WORDS CONTENT REDUCER]')
       try {
-        const payload = wordReplacerAlgorithm()
-        console.log('wordReplacerAlgorithm', payload)
-        response({payload, message: 'fix words completed'})
+        const {errorsCount} = wordReplacerAlgorithm()
+        response({payload: {errorsCount}, message: 'fix words completed'})
       } catch (error) {
         response({message: `fix words error: ${error}`})
       }

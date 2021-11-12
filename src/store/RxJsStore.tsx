@@ -2,16 +2,14 @@ import {useState, useEffect, useCallback} from "react"
 import {distinctUntilKeyChanged, pluck} from 'rxjs/operators'
 import {BehaviorSubject, Subscription, Observable} from 'rxjs'
 
-import reducers from "./reducers";
-import {getCurrentTabUId, sendMessage} from "../lib/chromeUtils"
-import {ChromeMessage, Sender} from "../types";
+import reducers from "./reducers"
 
 export interface Action {
-  type: string;
+  type: string | undefined;
   payload?: any;
 }
 export type State = Record<string, any>
-export type Reducer = (state: State, action: Action) => Record<string, any>
+export type Reducer = (state: State | undefined, action: Action) => Record<string, any>
 export type Reducers = Record<string, Reducer>
 export type Dispatch =  (action: Action) => void
 export interface StoreClass {
@@ -20,18 +18,25 @@ export interface StoreClass {
   dispatch: Dispatch
 }
 
-export const START_UP_STORE = 'START_UP_STORE'
+export const setDefaultsFromReducers = (persistedState): Reducers => {
+  return Object.entries(reducers).reduce((acc, [key, reducer]) => {
+    return {
+      ...acc,
+      [key]: {
+        ...reducer(undefined, {type: undefined}),
+        ...persistedState[key]
+      }
+    }
+  }, {})
+}
 
-export default class Store implements StoreClass {
+class Store implements StoreClass {
   private state: BehaviorSubject<State>
   private reducers: Reducers
   
-  constructor(
-    reducers: Reducers,
-    initialState= {},
-  ) {
-    this.state = new BehaviorSubject(initialState)
+  constructor(reducers, persistedState= {}) {
     this.reducers = reducers
+    this.state = new BehaviorSubject(setDefaultsFromReducers(persistedState))
   }
 
   select = (key: string): Observable<unknown> => {
@@ -43,12 +48,12 @@ export default class Store implements StoreClass {
 
   subscribe = (callback: (state: State) => void): Subscription => {
     return this.state.subscribe(state => {
-      console.log('[SUBSCRIBE TRIGGER]', state)
       callback(state)
     })
   }
 
   dispatch = (action: Action): void => {
+    console.log('dispatch action', action)
     const oldState = this.state.getValue()
     const newState = Object.entries(this.reducers)
       .reduce((acc, [key, reducer]) => {
@@ -58,8 +63,8 @@ export default class Store implements StoreClass {
         }
       }, {})
 
+    console.log('store dispatch', newState)
     chrome.storage.sync.set(newState, () => {
-      console.log('[NEW STORE SAVED]', newState)
       this.state.next(newState)
     })
   }
@@ -84,9 +89,8 @@ export function useStore (): UseStoreState {
 
   useEffect(() => {
     chrome.storage.sync.get(null, chromePersistentState => {
-      console.log('[SET CHROME STATE]', chromePersistentState)
+      console.log('chromePersistentState', chromePersistentState)
       const storeInstance = new Store(reducers, chromePersistentState)
-      console.log('[SET NEW STORE INSTANCE]', storeInstance)
       setStoreInstance(storeInstance)
     })
   }, [])
@@ -94,24 +98,13 @@ export function useStore (): UseStoreState {
   useEffect(() => {
     if (!storeInstance) return
     const storeStateSubscription = storeInstance.subscribe(state => {
-      console.log('[AFTER DISPATCH SET NEW DATA]', state)
       setInternalStoreState(state)
     })
     return () => storeStateSubscription.unsubscribe()
   }, [storeInstance])
   
-  // useEffect(() => {
-  //   if (!storeInstance) return
-  //   console.log('[SEND MESSAGE TO OTHER FILES', storeInstance)
-  //   const message: ChromeMessage = {type: 'A_CASO', from: Sender.REACT}
-  //   sendMessage(message, (data) => {
-  //     console.log('[sendRuntimeMessage response callback]', data)
-  //   })
-  // }, [storeInstance])
-  
   const dispatchNewStoreState = useCallback((action: Action) => {
     if (!storeInstance) return
-    console.log('[DISPATCH ACTION]', action)
     storeInstance.dispatch(action)
   }, [storeInstance])
   
