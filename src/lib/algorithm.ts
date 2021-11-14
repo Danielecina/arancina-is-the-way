@@ -1,8 +1,7 @@
 import wordListToRewrite from './wordListToRewrite'
 import nodeTypeToEvaluate from "./nodeTypeToEvaluate"
-import countErrorsOnPage from "./countErrorsOnPage"
 
-function findElementsWithWrongWordAndReplace (element: Node) {
+function findElementsWithWrongWordAndReplace (element: Node | HTMLElement) {
   if (!element) return
   element.childNodes.forEach(findElementsWithWrongWordAndReplace)
   
@@ -21,21 +20,13 @@ function findElementsWithWrongWordAndReplace (element: Node) {
 }
 
 export default function algorithm (element?: Node)  {
-  let errorsCount
   if (element) {
-    errorsCount = countErrorsOnPage(element)
     findElementsWithWrongWordAndReplace(element)
-    return {
-      errorsCount
-    }
+    return
   }
   
   const rootElement = document.querySelector('body')
-  if (!rootElement) return {}
+  if (!rootElement) return
   
-  errorsCount = countErrorsOnPage(rootElement)
   findElementsWithWrongWordAndReplace(rootElement)
-  return {
-    errorsCount
-  }
 }

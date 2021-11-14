@@ -23,16 +23,16 @@ function appEventHandler(
         mutationObserver(watchMode)
         response({message: `watch mode ${watchMode ? 'starting' : 'disabled'}`})
       } catch (error) {
-        response({message: `watch mode error: ${error}`})
+        response({message: `watch mode failed: ${error}`})
       }
       break
     }
     case SUBSTITUTE_WORDS: {
       try {
-        const {errorsCount} = wordReplacerAlgorithm()
-        response({payload: {errorsCount}, message: 'fix words completed'})
+        wordReplacerAlgorithm()
+        response({message: 'fix words completed'})
       } catch (error) {
-        response({message: `fix words error: ${error}`})
+        response({message: `fix words failed: ${error}`})
       }
       break
     }

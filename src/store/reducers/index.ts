@@ -1,9 +1,7 @@
 import substitution from './substitution'
-import trophies from './trophies'
 
 const reducers = {
-  substitution,
-  trophies
+  substitution
 }
 
 export default reducers

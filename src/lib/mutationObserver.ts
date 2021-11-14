@@ -1,6 +1,6 @@
 import wordReplacerAlgorithm from './algorithm'
 
-let listener: MutationObserver
+export let listener: MutationObserver
 
 export function unsubscribeListener() {
   listener && listener.disconnect()
@@ -36,6 +36,7 @@ export default function mutationObserver(watchMode: boolean): undefined {
     unsubscribeListener()
     return
   }
+  
   wordReplacerAlgorithm()
   if (listener) return
   createListener()

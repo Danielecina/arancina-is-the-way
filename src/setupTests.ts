@@ -6,3 +6,5 @@ import '@testing-library/jest-dom';
 
 Object.assign(global, require('jest-chrome'))
 
+// @ts-ignore
+global.chrome.tabs.query = () => Promise.resolve([{id: 1}])
