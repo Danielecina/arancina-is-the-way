@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`mutationObserver expect to execute algorithm when DOM change 1`] = `
-<div>
-  <div>
-    arancino
-  </div>
-</div>
-`;

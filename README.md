@@ -57,7 +57,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn build:extension`
+### `yarn build`
 
 **Builds the extension** for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -106,15 +106,6 @@ Enjoy, install and spread with the hope that this word will be corrected
 ## Architecture
 
 Add some photo to explain the application architecture.
-
-Come passo l'istanza dello store in giro?
-RxJsStore ---> dispatch with action ---> reducer save to chrome store
-|
-|-- React js 
-|    
-|-- Content js 
-|    
-+-- Background js
 
 #### Chrome
 

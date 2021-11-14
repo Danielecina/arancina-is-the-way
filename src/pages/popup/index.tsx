@@ -9,7 +9,6 @@ import Home from './components/Home'
 import Illustration from "./components/Illustration"
 import Toolbar from './components/Toolbar'
 
-// import {useStore} from "../../store/RxJsStore";
 import './index.css'
 import {SubstitutionReducer} from "../../store/reducers/substitution";
 
