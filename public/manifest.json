@@ -13,7 +13,9 @@
     "activeTab",
     "tabs",
     "storage",
-    "webNavigation",
+    "webNavigation"
+  ],
+  "host_permissions": [
     "<all_urls>"
   ],
   "background": {

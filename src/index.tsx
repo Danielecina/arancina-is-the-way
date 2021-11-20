@@ -1,13 +1,13 @@
-import React from "react"
-import ReactDOM from 'react-dom';
-import {BrowserRouter} from 'react-router-dom';
-import {store} from './store'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {BrowserRouter} from 'react-router-dom'
 import {Provider} from 'react-redux'
 
-import reportWebVitals from "./reportWebVitals";
-import Router from "./pages/popup";
+import {store} from './store'
+import reportWebVitals from './reportWebVitals'
+import Router from './pages/popup'
 
-import "./index.css";
+import './index.css'
 
 store.then(store => {
   ReactDOM.render(
@@ -18,12 +18,11 @@ store.then(store => {
         </BrowserRouter>
       </React.StrictMode>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById('root')
   )
 })
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals()

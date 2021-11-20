@@ -1,25 +1,16 @@
 import debounce from 'lodash/debounce'
 
-import {sendMessage} from '../../lib/chromeUtils'
-import {TOGGLE_WATCH_MODE} from "../../store/actions/substitution"
+import watchModeMessage from './watchModeMessage'
 
 const DEBOUNCE_TIME = 300
 
-chrome.runtime.onInstalled.addListener(({
-  reason,
-  previousVersion,
-  id
-}: {
+chrome.runtime.onInstalled.addListener(({reason, previousVersion, id}: {
   reason: string,
   previousVersion?: string | undefined,
   id?: string | undefined
 }) => {
-  alert(`
-    [Application installed]:
-    ${reason};
-    ${previousVersion};
-    ${id};
-  `)
+  // eslint-disable-next-line no-console
+  console.log(reason, previousVersion, id)
 })
 
 // when user switch tab, trigger this background event
@@ -32,14 +23,4 @@ chrome.webNavigation.onDOMContentLoaded.addListener(debounce(({tabId}) => {
   chrome.storage.sync.get(null, watchModeMessage)
 }, DEBOUNCE_TIME))
 
-async function watchModeMessage(store) {
-  console.log('store', store)
-  if (!store?.substitution?.watchMode) return
-
-  await sendMessage({
-    type: TOGGLE_WATCH_MODE,
-    payload: {watchMode: store?.substitution?.watchMode}
-  })
-}
-
-export default {};
+export default {}

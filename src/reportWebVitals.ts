@@ -4,17 +4,17 @@ import {
   getFID,
   getFCP,
   getLCP,
-  getTTFB,
-} from "web-vitals";
+  getTTFB
+} from 'web-vitals'
 
 const reportWebVitals = (onPerfEntry?: ReportHandler) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
-    getCLS(onPerfEntry);
-    getFID(onPerfEntry);
-    getFCP(onPerfEntry);
-    getLCP(onPerfEntry);
-    getTTFB(onPerfEntry);
+    getCLS(onPerfEntry)
+    getFID(onPerfEntry)
+    getFCP(onPerfEntry)
+    getLCP(onPerfEntry)
+    getTTFB(onPerfEntry)
   }
-};
+}
 
-export default reportWebVitals;
+export default reportWebVitals

@@ -2,7 +2,7 @@ import wordReplacerAlgorithm from './algorithm'
 
 export let listener: MutationObserver
 
-export function unsubscribeListener() {
+export function unsubscribeListener () {
   listener && listener.disconnect()
 }
 
@@ -19,11 +19,11 @@ export function mutationRecord (mutation: MutationRecord) {
   }
 }
 
-export function createListener() {
+export function createListener () {
   listener = new MutationObserver((mutations: MutationRecord[]) => {
     mutations.forEach(mutationRecord)
   })
-  
+
   listener.observe(document.body, {
     childList: true,
     characterData: true,
@@ -31,12 +31,12 @@ export function createListener() {
   })
 }
 
-export default function mutationObserver(watchMode: boolean): undefined {
+export default function mutationObserver (watchMode: boolean): undefined {
   if (!watchMode) {
     unsubscribeListener()
     return
   }
-  
+
   wordReplacerAlgorithm()
   if (listener) return
   createListener()

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoxList component BoxRowActions snapshot 1`] = `
+<div
+  className="box-row--actions"
+>
+  BoxRowActions children
+</div>
+`;
+
+exports[`BoxList component BoxRowActions snapshot 2`] = `
+<div
+  className="box-row--title"
+>
+  BoxRowContent children
+</div>
+`;
+
+exports[`BoxList component boxRow snapshot 1`] = `
+<div
+  className="box-row"
+>
+  BoxRow children
+</div>
+`;
+
+exports[`BoxList component snapshot 1`] = `
+<main
+  className="box"
+>
+  <div
+    className="box-row"
+  >
+    <div
+      className="box-row--title"
+    >
+      test-content
+    </div>
+    <div
+      className="box-row--actions"
+    >
+      test-actions
+    </div>
+    test-extra
+  </div>
+</main>
+`;

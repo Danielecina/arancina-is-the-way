@@ -1,6 +1,6 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 
-import reducers from "./reducers"
+import reducers from './reducers'
 
 const combinedReducers = combineReducers(reducers)
 

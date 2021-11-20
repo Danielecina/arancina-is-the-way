@@ -1,11 +1,5 @@
-/* Reset prime font family */
-.p-component {
-  font-family: 'Raleway', sans-serif !important;
-}
-
-.home {
+.box {
   color: white;
-  font-family: 'Raleway', sans-serif;
   line-height: 1;
   display: flex;
   flex-direction: column;
@@ -18,22 +12,19 @@
   border-radius: 16px;
 }
 
-.home-row {
+.box .box-row {
   display: grid;
-  height: 42px;
   grid-template-columns: 1fr auto;
   align-items: center;
   gap: 12px;
 }
 
-.search-button {
-  /*font-size: 22px !important;*/
-  /*font-weight: 900 !important;*/
-  /*color: #3F51B5 !important;*/
-  /*background-color: white !important;*/
-}
-
-.title {
+.box .box-row--title {
   font-size: 22px;
   font-weight: 900;
+}
+
+.box .box-row--actions {
+  display: flex;
+  align-items: center;
 }

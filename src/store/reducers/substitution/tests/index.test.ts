@@ -1,5 +1,5 @@
 import substitution, {initialState} from '..'
-import {TOGGLE_WATCH_MODE} from "../../../actions/substitution"
+import {TOGGLE_WATCH_MODE} from '../../../actions/substitution'
 
 describe('substitution reducer', () => {
   test('expect to reduce correctly when initialState', () => {
@@ -10,5 +10,4 @@ describe('substitution reducer', () => {
       watchMode: true
     })
   })
-
 })

@@ -1,5 +1,5 @@
 interface WrongMap {
-  wrongWord: string
+  wrongWord: string,
   correctWord: string
 }
 

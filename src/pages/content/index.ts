@@ -1,16 +1,15 @@
 /* Content is the unique file that have access to dom element */
-import {ChromeMessage} from "../../types"
-import {TOGGLE_WATCH_MODE, SUBSTITUTE_WORDS} from "../../store/actions/substitution"
-
+import {ChromeMessage} from '../../types'
+import {TOGGLE_WATCH_MODE, SUBSTITUTE_WORDS} from '../../store/actions/substitution'
 import mutationObserver from '../../lib/mutationObserver'
 import wordReplacerAlgorithm from '../../lib/algorithm'
 
 interface Result {
-  payload?: any
+  payload?: any,
   message?: string
 }
 
-function appEventHandler(
+export function appEventHandler (
   message: ChromeMessage,
   sender: chrome.runtime.MessageSender,
   response: (result?: Result) => void

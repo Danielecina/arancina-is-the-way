@@ -2,7 +2,7 @@ import React from 'react'
 
 import mutationObserver, {listener} from '../mutationObserver'
 import * as algorithm from '../algorithm'
-import * as chromeUtils from "../chromeUtils"
+import * as chromeUtils from '../chromeUtils'
 
 jest.spyOn(chromeUtils, 'getCurrentTabUId').mockImplementation(() => Promise.resolve(1))
 

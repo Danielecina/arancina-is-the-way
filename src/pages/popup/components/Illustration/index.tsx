@@ -1,14 +1,14 @@
-import React, {useCallback} from "react"
-import PropTypes from "prop-types"
+import React, {useCallback} from 'react'
+import PropTypes from 'prop-types'
 
-import {ReactComponent as Padella} from "../../../assets/svgs/padella.svg"
-import {ReactComponent as AuraEffect} from "../../../assets/svgs/aura.svg"
-import {ReactComponent as Arancina} from "../../../assets/svgs/arancina.svg"
+import {ReactComponent as FryingPan} from '../../../../assets/svgs/fryingPan.svg'
+import {ReactComponent as AuraEffect} from '../../../../assets/svgs/aura.svg'
+import {ReactComponent as Arancina} from '../../../../assets/svgs/arancina.svg'
 
 import './index.css'
 
 Illustration.propTypes = {
-  watchMode: PropTypes.bool,
+  watchMode: PropTypes.bool
 }
 export default function Illustration ({watchMode}) {
   const onFire = useCallback((name) => {
@@ -16,8 +16,8 @@ export default function Illustration ({watchMode}) {
   }, [watchMode])
 
   return (
-    <div className={'illustration-wrapper'}>
-      <Padella className={onFire('padella')} />
+    <div className={'illustration-wrapper'} title={'arancina-illustration'}>
+      <FryingPan className={onFire('fryingPan')} />
       <AuraEffect className={onFire('aura')} />
       <Arancina className={onFire('arancina')} />
     </div>

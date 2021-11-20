@@ -10,7 +10,7 @@
     "react-app-rewired": "2.1.6",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.6",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.1",
     "react-transition-group": "^4.4.2",
     "redux": "^4.1.2",
@@ -25,6 +25,12 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-config-standard-react": "^7.0.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
     "babel-plugin-import": "^1.13.3",
     "customize-cra": "^1.0.0",
     "enzyme": "^3.11.0",
@@ -32,12 +38,14 @@
     "jest-chrome": "^0.7.2",
     "less": "^4.1.2",
     "less-loader": "^7.3.0",
+    "react-test-renderer": "^17.0.2",
     "typescript": "4.1.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "INLINE_RUNTIME_CHUNK=false react-app-rewired build",
     "test": "react-app-rewired test",
+    "lint": "eslint --ext=.js --ext=.ts --ext=.tsx src",
     "coverage": "yarn test --coverage --watchAll=false --coverageReporters=text-summary --coverageReporters=lcov"
   },
   "eslintConfig": {
