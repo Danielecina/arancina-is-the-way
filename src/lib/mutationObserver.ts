@@ -1,9 +1,10 @@
 import wordReplacerAlgorithm from './algorithm'
 
-export let listener: MutationObserver
+export let listener: MutationObserver | undefined
 
 export function unsubscribeListener () {
   listener && listener.disconnect()
+  listener = undefined
 }
 
 const MUTATION_OBSERVER_CHARACTER_DATA = 'characterData'
