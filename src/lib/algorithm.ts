@@ -1,14 +1,13 @@
 import wordListToRewrite from './wordListToRewrite'
 import nodeTypeToEvaluate from './nodeTypeToEvaluate'
 
-function findElementsWithWrongWordAndReplace (element: Node | HTMLElement) {
-  if (!element) return
+export function findElementsWithWrongWordAndReplace (element?: Node | HTMLElement): boolean | undefined {
+  if (!element) return false
   element.childNodes.forEach(findElementsWithWrongWordAndReplace)
 
-  if (
-    !element.textContent &&
-    !nodeTypeToEvaluate(element.nodeType, element.nodeName)
-  ) return
+  if (!element.textContent || !nodeTypeToEvaluate(element.nodeType, element.nodeName)) {
+    return false
+  }
 
   wordListToRewrite.forEach(({wrongWord, correctWord}) => {
     const regex = new RegExp(wrongWord, 'g')
@@ -17,16 +16,16 @@ function findElementsWithWrongWordAndReplace (element: Node | HTMLElement) {
       element.textContent = (element.textContent || '').replace(regex, correctWord)
     }
   })
+  return true
 }
 
-export default function algorithm (element?: Node) {
+export default function algorithm (element?: Node): boolean | undefined {
   if (element) {
-    findElementsWithWrongWordAndReplace(element)
-    return
+    return findElementsWithWrongWordAndReplace(element)
   }
 
   const rootElement = document.querySelector('body')
-  if (!rootElement) return
+  if (!rootElement) return false
 
-  findElementsWithWrongWordAndReplace(rootElement)
+  return findElementsWithWrongWordAndReplace(rootElement)
 }

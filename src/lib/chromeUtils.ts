@@ -7,8 +7,8 @@ export const getCurrentTabUId = async (): Promise<number | undefined> => {
   return tab.id
 }
 
-export const createNewTab = (url) => {
-  return new Promise((resolve, reject) => {
+export const createNewTab = async (url) => {
+  await new Promise((resolve, reject) => {
     if (chrome.runtime.lastError) {
       reject(chrome.runtime.lastError.message)
     }

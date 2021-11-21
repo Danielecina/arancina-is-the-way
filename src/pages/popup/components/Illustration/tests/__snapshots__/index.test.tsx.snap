@@ -3,6 +3,7 @@
 exports[`Toolbar snapshot 1`] = `
 <div
   className="illustration-wrapper"
+  title="arancina-illustration"
 >
   <svg
     className="fryingPan"
@@ -25,6 +26,7 @@ exports[`Toolbar snapshot 1`] = `
 exports[`Toolbar snapshot with watchMode true 1`] = `
 <div
   className="illustration-wrapper"
+  title="arancina-illustration"
 >
   <svg
     className="fryingPan on-fire"
