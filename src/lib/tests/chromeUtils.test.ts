@@ -10,7 +10,7 @@ describe('getCurrentTabUId', () => {
   test('expect to return correct tabId', async () => {
     // mocked in setup tests
     const tabId = await getCurrentTabUId()
-    expect(tabId).toEqual(1)
+    expect(tabId).toEqual(11)
   })
 })
 

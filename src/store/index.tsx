@@ -6,13 +6,16 @@ const combinedReducers = combineReducers(reducers)
 
 export type RootState = ReturnType<typeof combinedReducers>
 
-const promiseStore = async () => {
-  const persistedState: Record<string, any> = await new Promise(resolve => {
+export const persistedState: () => Record<string, any> = async () => {
+  return new Promise(resolve => {
     chrome.storage.sync.get(null, chromePersistentState => {
       resolve(chromePersistentState)
     })
   })
+}
 
+export const promiseStore = async () => {
+  const persisted = await persistedState()
   const saveDataToChromeStorage = store => next => action => {
     const result = next(action)
     chrome.storage.sync.set(store.getState())
@@ -21,7 +24,7 @@ const promiseStore = async () => {
 
   return createStore(
     combinedReducers,
-    persistedState,
+    persisted,
     applyMiddleware(saveDataToChromeStorage)
   )
 }
