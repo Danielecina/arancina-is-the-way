@@ -17,12 +17,12 @@ export function appEventHandler (
   const {payload = {}, type} = message
   switch (type) {
     case TOGGLE_WATCH_MODE: {
-      const {watchMode} = payload
       try {
+        const {watchMode} = payload
         mutationObserver(watchMode)
         response({message: `watch mode ${watchMode ? 'starting' : 'disabled'}`})
       } catch (error) {
-        response({message: `watch mode failed: ${error}`})
+        response({message: `watch mode failed ${error}`})
       }
       break
     }
@@ -31,7 +31,7 @@ export function appEventHandler (
         wordReplacerAlgorithm()
         response({message: 'fix words completed'})
       } catch (error) {
-        response({message: `fix words failed: ${error}`})
+        response({message: `fix words failed ${error}`})
       }
       break
     }
