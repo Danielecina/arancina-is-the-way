@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`wordListToRewrite snapshot 1`] = `
+Array [
+  Object {
+    "correctWord": "arancina",
+    "wrongWord": "arancino",
+  },
+  Object {
+    "correctWord": "arancine",
+    "wrongWord": "arancini",
+  },
+  Object {
+    "correctWord": "Arancine",
+    "wrongWord": "Arancino",
+  },
+  Object {
+    "correctWord": "Arancine",
+    "wrongWord": "Arancini",
+  },
+]
+`;
