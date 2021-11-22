@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;900&display=swap');
+
+.app {
+  display: grid;
+  grid-template-rows: 0 auto 1fr;
+  align-items: flex-end;
+  position: relative;
+
+  background: linear-gradient(135deg, #005c97, #363795);
+
+  padding: 24px;
+  width: 100%;
+}

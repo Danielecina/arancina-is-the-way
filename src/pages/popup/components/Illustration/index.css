@@ -1,0 +1,81 @@
+.illustration-wrapper {
+  cursor: pointer;
+}
+
+.fryingPan {
+  height: auto;
+  position: absolute;
+  top: 20px;
+  width: 430px;
+  left: -90px;
+  transition: transform 200ms ease-in-out, opacity 200ms ease-in;
+  opacity: 0;
+}
+
+.aura {
+  width: auto;
+  height: 150px;
+  position: absolute;
+  top: 47px;
+  left: 63px;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.arancina {
+  width: 80%;
+  left: 10%;
+  height: auto;
+  position: absolute;
+  top: 45px;
+  transform: scale(1.2);
+  transition: transform 300ms ease;
+}
+
+/* Arancina animation on-fire */
+.fryingPan.on-fire {
+  opacity: 1;
+  transform: translateX(10px) rotate(-5deg);
+}
+
+.arancina.on-fire {
+  transform: scale(1) rotate(-25deg) translateX(-25px);
+}
+
+.aura.on-fire {
+  opacity: 1
+}
+/* End Arancina animation on-fire */
+
+
+/* Arancina animation */
+@keyframes arancina-body {
+  0% {
+    transform: rotate(360deg)
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Arancina SVG styles */
+.arancina .arancina-body {
+  box-shadow: 0 0 50px -4px #ffecd2;
+}
+
+.arancina .arancina-body,
+.arancina .crumb {
+  animation-name: arancina-body;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transform-origin: 87% 47%;
+}
+
+.arancina .arancina-body {
+  animation-duration: 80s;
+}
+
+.arancina .crumb {
+  animation-duration: 35s;
+}
+/* End Arancina animation */

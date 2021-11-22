@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toolbar snapshot 1`] = `
+<div
+  className="illustration-wrapper"
+  title="arancina-illustration"
+>
+  <svg
+    className="fryingPan"
+  >
+    fryingPan.svg
+  </svg>
+  <svg
+    className="aura"
+  >
+    aura.svg
+  </svg>
+  <svg
+    className="arancina"
+  >
+    arancina.svg
+  </svg>
+</div>
+`;
+
+exports[`Toolbar snapshot with watchMode true 1`] = `
+<div
+  className="illustration-wrapper"
+  title="arancina-illustration"
+>
+  <svg
+    className="fryingPan on-fire"
+  >
+    fryingPan.svg
+  </svg>
+  <svg
+    className="aura on-fire"
+  >
+    aura.svg
+  </svg>
+  <svg
+    className="arancina on-fire"
+  >
+    arancina.svg
+  </svg>
+</div>
+`;

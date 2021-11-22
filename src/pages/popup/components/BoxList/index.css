@@ -1,0 +1,30 @@
+.box {
+  color: white;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 16px;
+}
+
+.box .box-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.box .box-row--title {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.box .box-row--actions {
+  display: flex;
+  align-items: center;
+}
