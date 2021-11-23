@@ -5,7 +5,6 @@ import mutationObserver, {
   createListener,
   unsubscribeListener
 } from '../mutationObserver'
-import {type} from "os";
 
 describe('mutationObserver', () => {
   beforeEach(() => {
