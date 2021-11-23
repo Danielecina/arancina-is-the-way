@@ -3,31 +3,31 @@
 # 🍘 Arancina is the only way 🍘
 [![Coverage Status][coverall-svg]][coverall-io]
 
-This Chrome extension is thinked after a crazy night.
-I'm a developer born in Palermo in Sicily and in my land we protect with really passion the word Arancina.
+This Chrome extension was born after a crazy night.
+I'm a developer from Palermo, Sicily and in my land we protect with strong passion the word Arancina.
 Maybe there isn't really a reason to hate other inflections of this word
-but there is something inside me that hurts when I hear this crippled word.
+but there is something inside me that hurts when I hear it crippled.
 
-This pain also expanded during reading over time
-So if you are wondering why this extension exists I think it is not for you
-This extension help all people that, like me, need to resolves this pain.
-Enjoy, install and spread with the hope that this word will be corrected
+This pain also expanded while reading over time
+So if you are wondering why this extension exists, I think it is not for you
+This extension help all people that, like me, need to resolve this pain.
+Enjoy, install it and spread it with the hope that this word will be corrected all over the world!
 
 ## 🏢 Architecture
 </div>
 
 #### Manifest.json
-Manifest.json is a most important part of application configuration.
-This file contains chrome the configuration. You can [see more info here](https://developer.chrome.com/docs/extensions/mv3/intro/)
+Manifest.json is the most important part of application configuration.
+This file contains the Chrome configuration. You can [see more info here](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
 #### Pages
-*Popup* contains the react app code. 
-*Content* contains all messages listerer. This file is the unique that can comunicate and see the user DOM.
-*Background* control the interaction event of user with chrome tab and send messages that was listened to content.ts to trigger specific functionality.
+*Popup* contains the React app code.
+*Content* contains all messages listeners. This file is the only that can communicate with and access the user DOM.
+*Background* controls the interaction events of users with Chrome tab and send messages to content.ts to trigger specific functionality.
 
 #### Communication from pages
-Each file doesn't know what the other does. All logics are connected to`chrome.tabs.sendMessage`.
-A message is an action that have an instruction for specific area. It is composed from a type(*required*) and a payload
+Each file doesn't know what the others do. All logics are connected to `chrome.tabs.sendMessage`.
+A message is an action that have an instruction for specific area. It is composed by a type(*required*) and a payload
 
 <div align="center">
 
@@ -37,8 +37,8 @@ A message is an action that have an instruction for specific area. It is compose
 
 `yarn build`
 
-**Builds the extension** for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Builds the extension** for production to the `build` folder.
+It bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and your extension is ready to be used in Developer mode or published to the Google Web Store!.
 
