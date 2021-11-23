@@ -11,12 +11,11 @@ They represent what you would like to do with this application
 
 ## 📄 The list
 
-
 </div>
 
 ### 💡 Functionality
 
-* [ ] Performance test with a specific memory allocation to measure execution time
+* [ ] Performance test with a specific memory allocation to measure execution time with thousands of dom nodes
 * [ ] New documentation route to explain the history of arancina term
 * [ ] Notification to communicate success or failure of algorithm replacements
 * [ ] Internalization of application using user selected chrome language
@@ -24,6 +23,7 @@ They represent what you would like to do with this application
 * [ ] Google Analytics to register how many times globally the word are substituted
 * [ ] Google Analytics to register who use watch mode
 * [ ] Google Analytics to register who uninstall app
+* [ ] Gather information about reason of uninstall
 
 * [ ] *...you can propose improvements here*
 
