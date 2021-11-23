@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v1.0.0 23/11/2021
+
 ### Added
 - Added `fix words` functionality
 - Added `watch mode` functionality
