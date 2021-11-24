@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Arancina is the only way",
+  "name": "arancina-is-the-only-way",
   "version": "1.0.0",
-  "description": "An auto dom fixer for specific arancina words",
+  "description": "Corrects all synonyms for the word Arancina",
   "author": "Daniele Cinà",
   "icons": {
     "16": "logo192.png",
