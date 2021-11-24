@@ -1,3 +1,4 @@
+import wordListToRewrite from '../wordListToRewrite'
 import wordReplacerAlgorithm, {findElementsWithWrongWordAndReplace} from '../algorithm'
 
 describe('findElementsWithWrongWordAndReplace', () => {
@@ -39,21 +40,35 @@ describe('findElementsWithWrongWordAndReplace', () => {
 })
 
 describe('wordReplacerAlgorithm', () => {
-  test('expect to return correct value ', () => {
-    const node = document.createElement('div')
-    node.textContent = 'arancini'
+  test('expect to return correct value forEach case', () => {
+    wordListToRewrite.forEach(({wrongWord, correctWord}) => {
+      const node = document.createElement('div')
+      node.textContent = wrongWord
 
-    const ret = wordReplacerAlgorithm(node)
-    expect(ret).toEqual(true)
-    expect(node.textContent).toEqual('arancine')
+      const ret = wordReplacerAlgorithm(node)
+      expect(ret).toEqual(true)
+      expect(node.textContent).toEqual(correctWord)
+    })
   })
 
-  test('expect to fail because not document body is set', () => {
-    const ret = wordReplacerAlgorithm(undefined)
-    expect(ret).toEqual(false)
+  test('expect to return correct value for special case', () => {
+    const specialCase = [
+      {correctWord: 'ARANCINE', wrongWord: 'ARANCINI'},
+      {correctWord: 'Arancina', wrongWord: 'Arancino'},
+      {correctWord: 'arancina', wrongWord: 'ARaNcInO'}
+    ]
+
+    specialCase.forEach(({wrongWord, correctWord}) => {
+      const node = document.createElement('div')
+      node.textContent = wrongWord
+
+      const ret = wordReplacerAlgorithm(node)
+      expect(ret).toEqual(true)
+      expect(node.textContent).toEqual(correctWord)
+    })
   })
 
-  test('expect to fail because body is empty', () => {
+  test('expect to return false because body is empty', () => {
     const body = document.createElement('body')
     jest.spyOn(document, 'querySelector').mockImplementation(() => {
       return body
@@ -63,7 +78,7 @@ describe('wordReplacerAlgorithm', () => {
     expect(ret).toEqual(false)
   })
 
-  test('expect to fail because body is empty', () => {
+  test('expect to return true if child has wrongWord', () => {
     const body = document.createElement('body')
     const node = document.createElement('div')
     body.appendChild(node)
@@ -80,4 +95,50 @@ describe('wordReplacerAlgorithm', () => {
     expect(ret).toEqual(true)
     expect(child.textContent).toEqual('arancina')
   })
+
+  test('expect to return correct value with hundred dom element', () => {
+    const body = document.createElement('body')
+    let lastChild
+    appendChildren(body, lastChild, 100)
+
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return body
+    })
+    const ret = wordReplacerAlgorithm(body)
+    expect(ret).toEqual(true)
+    expect(body.innerHTML).toMatchSnapshot()
+  })
+
+  test('expect to return correct value with thousand dom element', () => {
+    const body = document.createElement('body')
+    let lastChild
+    appendChildren(body, lastChild, 1000)
+
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return body
+    })
+    const ret = wordReplacerAlgorithm(body)
+    expect(ret).toEqual(true)
+    expect(body.innerHTML).toMatchSnapshot()
+  })
 })
+
+function appendChildren (element: Element, lastChild: Element, count: number) {
+  let isFirstRun = true
+  while (count > 0) {
+    const node = document.createElement('div')
+    node.textContent = 'arancino'
+
+    if (isFirstRun) {
+      element.appendChild(node)
+    } else {
+      lastChild.appendChild(node)
+    }
+
+    if (isFirstRun) {
+      isFirstRun = false
+    }
+    lastChild = node
+    count--
+  }
+}
