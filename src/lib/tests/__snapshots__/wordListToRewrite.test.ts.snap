@@ -10,13 +10,5 @@ Array [
     "correctWord": "arancine",
     "wrongWord": "arancini",
   },
-  Object {
-    "correctWord": "Arancine",
-    "wrongWord": "Arancino",
-  },
-  Object {
-    "correctWord": "Arancine",
-    "wrongWord": "Arancini",
-  },
 ]
 `;
