@@ -11,14 +11,6 @@ const wordListToRewrite : Array<WrongMap> = [
   {
     wrongWord: 'arancini',
     correctWord: 'arancine'
-  },
-  {
-    wrongWord: 'Arancino',
-    correctWord: 'Arancine'
-  },
-  {
-    wrongWord: 'Arancini',
-    correctWord: 'Arancine'
   }
 ]
 
