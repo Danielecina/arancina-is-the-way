@@ -19,7 +19,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "@types/chrome": "0.0.169",
+    "@types/chrome": "0.0.170",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.12",
     "@types/react": "^16.9.53",
