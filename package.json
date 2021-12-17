@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "antd": "^4.17.1",
+    "antd": "^4.17.3",
     "lodash.debounce": "^4.0.8",
     "react": "^17.0.2",
     "react-app-rewired": "2.1.8",
