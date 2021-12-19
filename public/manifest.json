@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "arancina-is-the-only-way",
+  "name": "Arancina is the only way",
   "version": "1.0.0",
   "description": "Corrects all synonyms for the word Arancina",
   "author": "Daniele Cinà",
@@ -31,6 +31,6 @@
   ],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Arancina is the way"
+    "default_title": "Arancina is the only way"
   }
 }
