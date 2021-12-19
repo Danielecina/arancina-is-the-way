@@ -6,6 +6,8 @@ import mutationObserver, {
   unsubscribeListener
 } from '../mutationObserver'
 
+jest.mock('lodash/debounce', () => fn => fn)
+
 describe('mutationObserver', () => {
   beforeEach(() => {
     jest.clearAllMocks()
@@ -52,54 +54,21 @@ describe('mutationRecords', () => {
   const child = document.createElement('div')
   node.appendChild(child)
 
-  const childListMutation: MutationRecord = {
-    addedNodes: node.childNodes,
-    attributeName: null,
-    attributeNamespace: '',
-    previousSibling: null,
-    nextSibling: null,
-    removedNodes: node.childNodes,
-    type: 'childList',
-    oldValue: null,
-    target: child
-  }
-
-  test('expect to execute correct mutation for childList type', () => {
+  test('expect to execute mutations', () => {
     const wordReplacerAlgorithmMock = jest.fn()
     jest.spyOn(wordReplacerAlgorithm, 'default').mockImplementation(wordReplacerAlgorithmMock)
-    mutationRecords([childListMutation])
-    expect(wordReplacerAlgorithmMock).toHaveBeenCalledWith(child)
-  })
-
-  test('expect to execute correct mutation for characterData type', () => {
-    const text = document.createTextNode('a new bad arancino')
-    const characterDataMutation: MutationRecord = {
-      ...childListMutation,
-      type: 'characterData',
-      addedNodes: text.childNodes,
-      removedNodes: text.childNodes,
-      target: text
-    }
-    const wordReplacerAlgorithmMock = jest.fn()
-    jest.spyOn(wordReplacerAlgorithm, 'default').mockImplementation(wordReplacerAlgorithmMock)
-    mutationRecords([characterDataMutation])
-    expect(wordReplacerAlgorithmMock).toHaveBeenCalledWith(text)
-  })
-
-  test('expect to no execute mutations for unhandled type', () => {
-    const noHandledMutationType: MutationRecord = {
-      ...childListMutation,
-      type: 'attributes'
-    }
-    const wordReplacerAlgorithmMock = jest.fn()
-    jest.spyOn(wordReplacerAlgorithm, 'default').mockImplementation(wordReplacerAlgorithmMock)
-    mutationRecords([noHandledMutationType])
-    expect(wordReplacerAlgorithmMock).toHaveBeenCalledTimes(0)
+    mutationRecords()
+    expect(wordReplacerAlgorithmMock).toHaveBeenCalled()
   })
 })
 
 describe('createListener', () => {
   test('expect to return if listener is already set', () => {
+    const body = document.createElement('body')
+    jest.spyOn(document, 'querySelector').mockImplementation(() => {
+      return body
+    })
+
     expect(listener).toEqual(undefined)
     const resultCreation = createListener()
     expect(resultCreation).toBe(true)

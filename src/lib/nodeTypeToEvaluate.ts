@@ -3,6 +3,6 @@ export default function nodeTypeToEvaluate (nodeType: number, nodeName: string) 
   // To more info on this nodeName array of numbers see https://www.w3schools.com/jsref/prop_node_nodename.asp
   return (
     [1, 3].includes(nodeType) &&
-    !['SCRIPT', 'STYLE'].includes(nodeName)
+    !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(nodeName)
   )
 }

@@ -1,12 +1,6 @@
-import wordListToRewrite from '../wordListToRewrite'
 import wordReplacerAlgorithm, {findElementsWithWrongWordAndReplace} from '../algorithm'
 
 describe('findElementsWithWrongWordAndReplace', () => {
-  test('expect to return correct value if element is not passed', () => {
-    const ret = findElementsWithWrongWordAndReplace(undefined)
-    expect(ret).toBe(false)
-  })
-
   test('expect to return correct value if element not contain test', () => {
     const node = document.createElement('div')
     const ret = findElementsWithWrongWordAndReplace(node)
@@ -40,17 +34,6 @@ describe('findElementsWithWrongWordAndReplace', () => {
 })
 
 describe('wordReplacerAlgorithm', () => {
-  test('expect to return correct value forEach case', () => {
-    wordListToRewrite.forEach(({wrongWord, correctWord}) => {
-      const node = document.createElement('div')
-      node.textContent = wrongWord
-
-      const ret = wordReplacerAlgorithm(node)
-      expect(ret).toEqual(true)
-      expect(node.textContent).toEqual(correctWord)
-    })
-  })
-
   test('expect to return correct value for special case', () => {
     const specialCase = [
       {correctWord: 'ARANCINE', wrongWord: 'ARANCINI'},
@@ -59,12 +42,15 @@ describe('wordReplacerAlgorithm', () => {
     ]
 
     specialCase.forEach(({wrongWord, correctWord}) => {
-      const node = document.createElement('div')
-      node.textContent = wrongWord
+      const body = document.createElement('body')
+      jest.spyOn(document, 'querySelector').mockImplementation(() => {
+        return body
+      })
+      body.textContent = wrongWord
 
-      const ret = wordReplacerAlgorithm(node)
+      const ret = wordReplacerAlgorithm()
       expect(ret).toEqual(true)
-      expect(node.textContent).toEqual(correctWord)
+      expect(body.textContent).toEqual(correctWord)
     })
   })
 
@@ -74,7 +60,7 @@ describe('wordReplacerAlgorithm', () => {
       return body
     })
 
-    const ret = wordReplacerAlgorithm(undefined)
+    const ret = wordReplacerAlgorithm()
     expect(ret).toEqual(false)
   })
 
@@ -91,7 +77,7 @@ describe('wordReplacerAlgorithm', () => {
       return body
     })
 
-    const ret = wordReplacerAlgorithm(undefined)
+    const ret = wordReplacerAlgorithm()
     expect(ret).toEqual(true)
     expect(child.textContent).toEqual('arancina')
   })
@@ -104,7 +90,7 @@ describe('wordReplacerAlgorithm', () => {
     jest.spyOn(document, 'querySelector').mockImplementation(() => {
       return body
     })
-    const ret = wordReplacerAlgorithm(body)
+    const ret = wordReplacerAlgorithm()
     expect(ret).toEqual(true)
     expect(body.innerHTML).toMatchSnapshot()
   })
@@ -117,7 +103,7 @@ describe('wordReplacerAlgorithm', () => {
     jest.spyOn(document, 'querySelector').mockImplementation(() => {
       return body
     })
-    const ret = wordReplacerAlgorithm(body)
+    const ret = wordReplacerAlgorithm()
     expect(ret).toEqual(true)
     expect(body.innerHTML).toMatchSnapshot()
   })
