@@ -6,8 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v1.0.1 19/12/2021
+
 ### Fixed
 - Fixed bug where Capitalized and UPPERCASE letters weren't replaced correctly
+- Fixed some performance issues
 
 ## v1.0.0 23/11/2021
 
