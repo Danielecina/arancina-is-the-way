@@ -1,12 +1,12 @@
 import wordListToRewrite from './wordListToRewrite'
 import nodeTypeToEvaluate from './nodeTypeToEvaluate'
+import {hasSomeWrongWord} from './preChecks'
 
-export function capitalizeFirstLetter(string) {
+export function capitalizeFirstLetter (string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-export function findElementsWithWrongWordAndReplace (element?: Node | HTMLElement): boolean | undefined {
-  if (!element) return false
+export function findElementsWithWrongWordAndReplace (element: Node | HTMLElement): boolean {
   element.childNodes.forEach(findElementsWithWrongWordAndReplace)
 
   if (!element.textContent || !nodeTypeToEvaluate(element.nodeType, element.nodeName)) {
@@ -39,13 +39,18 @@ export function findElementsWithWrongWordAndReplace (element?: Node | HTMLElemen
   return true
 }
 
-export default function algorithm (element?: Node): boolean | undefined {
-  if (element) {
-    return findElementsWithWrongWordAndReplace(element)
+export default function algorithm (): boolean {
+  const body = document.querySelector('body')
+  if (!body) {
+    return false
   }
 
-  const rootElement = document.querySelector('body')
-  if (!rootElement) return false
+  const hasSomeWrongWordToReplace = hasSomeWrongWord(body)
+  if (!hasSomeWrongWordToReplace) {
+    return false
+  }
 
-  return findElementsWithWrongWordAndReplace(rootElement)
+  findElementsWithWrongWordAndReplace(body)
+
+  return true
 }
