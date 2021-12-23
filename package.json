@@ -1,6 +1,6 @@
 {
   "name": "arancina-is-the-only-way",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.17.4",
