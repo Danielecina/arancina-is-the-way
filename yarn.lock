@@ -3048,10 +3048,17 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+<<<<<<< HEAD
 "@types/chrome@0.0.171":
   version "0.0.171"
   resolved "https://registry.npmjs.org/@types/chrome/-/chrome-0.0.171.tgz"
   integrity sha512-CnCwFKI3COygib3DNJrCjePeoU2OCDGGbUcmftXtQ3loMABsLgwpG8z+LxV4kjQJFzmJDqOyhCSsbY9yyEfapQ==
+=======
+"@types/chrome@0.0.172":
+  version "0.0.172"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.172.tgz#8b4f6f812a15877357d43f80d46d040fcbc50ac0"
+  integrity sha512-fklMQmsoLp4dAraa2TlLP55M0c135wSb3XxKAh4j5a1cUuXlOzn6LN7bium30qm8Oy4mpGmp87wpqyiJMS1HxA==
+>>>>>>> 6cdcdf65fa957489e68f9601b68329ff83a1d150
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
@@ -3169,10 +3176,17 @@
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.3.tgz"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
+<<<<<<< HEAD
 "@types/node@*", "@types/node@^17.0.1":
   version "17.0.1"
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.1.tgz"
   integrity sha512-NXKvBVUzIbs6ylBwmOwHFkZS2EXCcjnqr8ZCRNaXBkHAf+3mn/rPcJxwrzuc6movh8fxQAsUUfYklJ/EG+hZqQ==
+=======
+"@types/node@*", "@types/node@^17.0.4":
+  version "17.0.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.4.tgz#fec0ce0526abb6062fd206d72a642811b887a111"
+  integrity sha512-6xwbrW4JJiJLgF+zNypN5wr2ykM9/jHcL7rQ8fZe2vuftggjzZeRSM4OwRc6Xk8qWjwJ99qVHo/JgOGmomWRog==
+>>>>>>> 6cdcdf65fa957489e68f9601b68329ff83a1d150
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -3223,10 +3237,17 @@
     hoist-non-react-statics "^3.3.0"
     redux "^4.0.0"
 
+<<<<<<< HEAD
 "@types/react@*", "@types/react@^17.0.37":
   version "17.0.37"
   resolved "https://registry.npmjs.org/@types/react/-/react-17.0.37.tgz"
   integrity sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==
+=======
+"@types/react@*", "@types/react@^17.0.38":
+  version "17.0.38"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.38.tgz#f24249fefd89357d5fa71f739a686b8d7c7202bd"
+  integrity sha512-SI92X1IA+FMnP3qM5m4QReluXzhcmovhZnLNm3pyeQlooi02qI7sLiepEYqT678uNiyc25XfCqxREFpy3W7YhQ==
+>>>>>>> 6cdcdf65fa957489e68f9601b68329ff83a1d150
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -11677,10 +11698,17 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+<<<<<<< HEAD
 react-app-rewired@2.1.8:
   version "2.1.8"
   resolved "https://registry.npmjs.org/react-app-rewired/-/react-app-rewired-2.1.8.tgz"
   integrity sha512-wjXPdKPLscA7mn0I1de1NHrbfWdXz4S1ladaGgHVKdn1hTgKK5N6EdGIJM0KrS6bKnJBj7WuqJroDTsPKKr66Q==
+=======
+react-app-rewired@2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-2.1.9.tgz#20c432c6414d354547e232c4fa1ac1112615ca3e"
+  integrity sha512-eOIRsDXbRCA9x+vIABS+VFBXO78bUbZ1pIyOuAkbP0Y6NEfbr4v9lHAyGsix4DxNcKpPqKYtvDKKlbOxMUCxlw==
+>>>>>>> 6cdcdf65fa957489e68f9601b68329ff83a1d150
   dependencies:
     semver "^5.6.0"
 
@@ -12508,7 +12536,7 @@ semver@7.0.0:
   resolved "https://registry.npmjs.org/semver/-/semver-7.0.0.tgz"
   integrity sha512-+GB6zVA9LWh6zovYQLALHwv5rb2PHGlJi3lfiqIHxR0uuwCgefcOJc59v9fv1w8GbStwxuuqqAjI9NMAOOgq1A==
 
-semver@7.3.2, semver@^7.2.1, semver@^7.3.2:
+semver@7.3.2:
   version "7.3.2"
   resolved "https://registry.npmjs.org/semver/-/semver-7.3.2.tgz"
   integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
@@ -12518,7 +12546,7 @@ semver@^6.0.0, semver@^6.1.0, semver@^6.1.1, semver@^6.1.2, semver@^6.3.0:
   resolved "https://registry.npmjs.org/semver/-/semver-6.3.0.tgz"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
-semver@^7.3.5:
+semver@^7.2.1, semver@^7.3.2, semver@^7.3.5:
   version "7.3.5"
   resolved "https://registry.npmjs.org/semver/-/semver-7.3.5.tgz"
   integrity sha512-PoeGJYh8HK4BTO/a9Tf6ZG3veo/A7ZVsYrSA6J8ny9nb3B1VrpkuN+z9OE5wfE5p6H4LchYZsegiQgbJD94ZFQ==
