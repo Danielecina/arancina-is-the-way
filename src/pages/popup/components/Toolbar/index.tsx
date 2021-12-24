@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react'
 import {Button, Tooltip} from 'antd'
 import {useHistory} from 'react-router-dom'
+import {useIntl} from 'react-intl'
 import {TrophyOutlined, GithubOutlined, HomeOutlined} from '@ant-design/icons'
 
 import './index.css'
@@ -48,6 +49,9 @@ const Toolbar: React.FC = () => {
 }
 
 const tooltipStyle = {fontWeight: 900}
-const TooltipInfo = <span style={tooltipStyle}>{'Coming soon'}</span>
+const TooltipInfo: React.FC = () => {
+  const {formatMessage} = useIntl()
+  return <span style={tooltipStyle}>{formatMessage({id: 'comingSoon'})}</span>
+}
 
 export default Toolbar
