@@ -1,4 +1,4 @@
-import React, {ReactChildren} from 'react'
+import React from 'react'
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router-dom'
 import {combineReducers, createStore, Store} from 'redux'
