@@ -13,7 +13,7 @@ import Toolbar from './components/Toolbar'
 import './index.css'
 import messages from '../../strings'
 
-const usersLocale = 'en'
+const usersLocale = 'it'
 
 const App: React.FC = () => {
   const substitution: SubstitutionReducer = useSelector((state: RootState) => state.substitution)

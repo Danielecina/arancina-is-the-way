@@ -5,7 +5,7 @@ export const it: Record<string, string> = {
   'home.autoReplace.description': 'Se attivo, questa funzionalità si preoccuperà di sostituire tutte le parole automaticamente',
 
   'contributing.content': 'Ti piace l\'estensione?',
-  'contributing.extra': 'Supporta Arancina is the way su GitHub',
+  'contributing.extra': 'Supporta l\'estensione su GitHub',
 
   comingSoon: 'Coming soon'
 }
