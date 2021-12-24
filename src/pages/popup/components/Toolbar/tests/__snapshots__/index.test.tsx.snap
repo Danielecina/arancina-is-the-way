@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Toolbar component expect to see correct TooltipInfo 1`] = `
+<span
+  style={
+    Object {
+      "fontWeight": 900,
+    }
+  }
+>
+  Coming soon
+</span>
+`;
+
 exports[`Toolbar component snapshot 1`] = `
 <header
   className="toolbar"

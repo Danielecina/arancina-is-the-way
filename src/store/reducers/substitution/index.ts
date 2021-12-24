@@ -1,14 +1,17 @@
 import {SUBSTITUTE_WORDS, TOGGLE_WATCH_MODE} from '../../actions/substitution'
 
 export interface SubstitutionReducer {
-  watchMode: boolean
+  watchMode?: boolean
 }
 
 export const initialState = {
   watchMode: false
 }
 
-const substitution = (state: SubstitutionReducer = initialState, {type, payload}): SubstitutionReducer => {
+const substitution = (
+  state: SubstitutionReducer = initialState,
+  {type, payload} : {type: string, payload?: any}
+): SubstitutionReducer => {
   switch (type) {
     case SUBSTITUTE_WORDS: {
       return state

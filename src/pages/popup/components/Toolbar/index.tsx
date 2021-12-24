@@ -49,7 +49,7 @@ const Toolbar: React.FC = () => {
 }
 
 const tooltipStyle = {fontWeight: 900}
-const TooltipInfo: React.FC = () => {
+export const TooltipInfo: React.FC = () => {
   const {formatMessage} = useIntl()
   return <span style={tooltipStyle}>{formatMessage({id: 'comingSoon'})}</span>
 }
