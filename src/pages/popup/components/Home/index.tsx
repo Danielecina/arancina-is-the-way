@@ -1,16 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {Button, Switch} from 'antd'
 import {SearchOutlined} from '@ant-design/icons'
 
 import BoxList from '../BoxList'
 
-Home.propTypes = {
-  onChangeWatchMode: PropTypes.func.isRequired,
-  onSubstituteWords: PropTypes.func.isRequired,
-  watchMode: PropTypes.bool
+type HomeType = {
+  onChangeWatchMode: (value: any) => Promise<void>,
+  onSubstituteWords: () => Promise<void>,
+  watchMode?: boolean
 }
-export default function Home ({watchMode, onChangeWatchMode, onSubstituteWords}) {
+
+const Home: React.FC<HomeType> = ({watchMode, onChangeWatchMode, onSubstituteWords}) => {
   const rows = [
     {
       id: 'find',
@@ -28,3 +28,5 @@ export default function Home ({watchMode, onChangeWatchMode, onSubstituteWords})
 
   return <BoxList rows={rows} />
 }
+
+export default Home

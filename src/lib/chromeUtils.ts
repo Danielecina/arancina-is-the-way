@@ -7,7 +7,7 @@ export const getCurrentTabUId = async (): Promise<number | undefined> => {
   return tab.id
 }
 
-export const createNewTab = async (url) => {
+export const createNewTab = async (url): Promise<void> => {
   await new Promise((resolve) => {
     chrome.tabs.create({url}, resolve)
   })
@@ -15,7 +15,7 @@ export const createNewTab = async (url) => {
 
 export const sendMessage = async (message: ChromeMessage): Promise<any> => {
   const tabId = await getCurrentTabUId()
-  const result = await new Promise((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     if (!tabId) {
       reject(new Error('missing tabId'))
       return
@@ -23,6 +23,4 @@ export const sendMessage = async (message: ChromeMessage): Promise<any> => {
 
     chrome.tabs.sendMessage(tabId, message, {}, resolve)
   })
-
-  return result
 }

@@ -8,7 +8,7 @@ export const initialState = {
   watchMode: false
 }
 
-const substitution = (state: SubstitutionReducer = initialState, {type, payload}) => {
+const substitution = (state: SubstitutionReducer = initialState, {type, payload}): SubstitutionReducer => {
   switch (type) {
     case SUBSTITUTE_WORDS: {
       return state

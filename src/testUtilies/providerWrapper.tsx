@@ -1,27 +1,31 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, {ReactChildren} from 'react'
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router-dom'
-import {combineReducers, createStore} from 'redux'
+import {combineReducers, createStore, Store} from 'redux'
 
 import reducers from '../store/reducers'
+import IntlWrapper from './intlWrapper'
 
-export function store (mockState) {
+export function store (mockState): Store {
   const rootReducer = combineReducers(reducers)
   return createStore(rootReducer, mockState)
 }
 
-MockProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  initialEntries: PropTypes.arrayOf(PropTypes.string).isRequired,
-  mockState: PropTypes.object.isRequired
+type MockProviderType = {
+  initialEntries: Array<string>,
+  mockState: Record<string, unknown>
 }
-export default function MockProvider ({mockState, initialEntries, children}) {
+
+const MockProvider: React.FC<MockProviderType> = ({mockState, initialEntries, children}) => {
   return (
     <Provider store={store(mockState)}>
       <MemoryRouter initialEntries={initialEntries}>
-        {children}
+        <IntlWrapper>
+          {children}
+        </IntlWrapper>
       </MemoryRouter>
     </Provider>
   )
 }
+
+export default MockProvider

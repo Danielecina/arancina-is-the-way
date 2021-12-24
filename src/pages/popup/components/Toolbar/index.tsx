@@ -5,7 +5,7 @@ import {TrophyOutlined, GithubOutlined, HomeOutlined} from '@ant-design/icons'
 
 import './index.css'
 
-export default function Toolbar () {
+const Toolbar: React.FC = () => {
   const [returnToHome, setReturnToHome] = useState(false)
   const history = useHistory()
   const onClick = useCallback(() => {
@@ -49,3 +49,5 @@ export default function Toolbar () {
 
 const tooltipStyle = {fontWeight: 900}
 const TooltipInfo = <span style={tooltipStyle}>{'Coming soon'}</span>
+
+export default Toolbar

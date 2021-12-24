@@ -1,6 +1,7 @@
 import React, {useCallback} from 'react'
 import {Switch, Route} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
+import {IntlProvider} from 'react-intl'
 
 import {RootState} from '../../store'
 import {SubstitutionReducer} from '../../store/reducers/substitution'
@@ -10,8 +11,11 @@ import Home from './components/Home'
 import Illustration from './components/Illustration'
 import Toolbar from './components/Toolbar'
 import './index.css'
+import messages from '../../strings'
 
-const App = () => {
+const usersLocale = 'en'
+
+const App: React.FC = () => {
   const substitution: SubstitutionReducer = useSelector((state: RootState) => state.substitution)
   const dispatch = useDispatch()
 
@@ -23,23 +27,31 @@ const App = () => {
     dispatch(await substituteWords())
   }, [dispatch])
 
+  const renderHome = useCallback(() => {
+    return (
+      <Home
+        onChangeWatchMode={onChangeWatchMode}
+        onSubstituteWords={onSubstituteWords}
+        watchMode={substitution?.watchMode}
+      />
+    )
+  }, [onChangeWatchMode, onSubstituteWords, substitution?.watchMode])
+
   return (
-    <div className={'app'}>
-      <Illustration watchMode={substitution?.watchMode} />
-      <Toolbar />
-      <Switch>
-        <Route component={Contributing} path={'/contributing'} />
-        <Route
-          render={() => (
-            <Home
-              onChangeWatchMode={onChangeWatchMode}
-              onSubstituteWords={onSubstituteWords}
-              watchMode={substitution?.watchMode}
-            />
-          )}
-        />
-      </Switch>
-    </div>
+    <IntlProvider
+      defaultLocale={'en'}
+      locale={usersLocale}
+      messages={messages[usersLocale]}
+    >
+      <div className={'app'}>
+        <Illustration watchMode={substitution?.watchMode} />
+        <Toolbar />
+        <Switch>
+          <Route component={Contributing} path={'/contributing'} />
+          <Route render={renderHome} />
+        </Switch>
+      </div>
+    </IntlProvider>
   )
 }
 

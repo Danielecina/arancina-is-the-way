@@ -13,7 +13,7 @@ export function appEventHandler (
   message: ChromeMessage,
   sender: chrome.runtime.MessageSender,
   response: (result?: Result) => void
-) {
+): void {
   const {payload = {}, type} = message
   switch (type) {
     case TOGGLE_WATCH_MODE: {
