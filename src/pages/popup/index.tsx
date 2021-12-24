@@ -10,10 +10,12 @@ import Contributing from './components/Contributing'
 import Home from './components/Home'
 import Illustration from './components/Illustration'
 import Toolbar from './components/Toolbar'
-import './index.css'
 import messages from '../../strings'
 
-const usersLocale = 'it'
+import './index.css'
+
+const language = navigator.language.split(/[-_]/)[0]
+const translations = messages[language] ? messages[language] : messages.en
 
 const App: React.FC = () => {
   const substitution: SubstitutionReducer = useSelector((state: RootState) => state.substitution)
@@ -40,8 +42,8 @@ const App: React.FC = () => {
   return (
     <IntlProvider
       defaultLocale={'en'}
-      locale={usersLocale}
-      messages={messages[usersLocale]}
+      locale={language}
+      messages={translations}
     >
       <div className={'app'}>
         <Illustration watchMode={substitution?.watchMode} />
