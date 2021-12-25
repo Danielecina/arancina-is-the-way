@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`store expect to return correct store 1`] = `
+Object {
+  "language": Object {
+    "locale": "en",
+    "selected": "browser",
+  },
+  "substitution": Object {
+    "watchMode": false,
+  },
+}
+`;

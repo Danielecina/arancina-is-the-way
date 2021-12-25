@@ -34,12 +34,20 @@ exports[`BoxList component snapshot 1`] = `
     <div
       className="box-row--title"
     >
-      test-content
-    </div>
-    <div
-      className="box-row--actions"
-    >
-      test-actions
+      <div
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        test-content
+      </div>
+      <div
+        className="box-row--actions"
+      >
+        test-actions
+      </div>
     </div>
     test-extra
   </div>

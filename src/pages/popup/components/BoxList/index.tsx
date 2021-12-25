@@ -15,8 +15,10 @@ const BoxList: React.FC<BoxListType> = ({rows}) => (
   <main className={'box'}>
     {rows.map(({content, actions, extra, id}) => (
       <BoxRow key={id}>
-        <BoxRowContent>{content}</BoxRowContent>
-        <BoxRowActions>{actions}</BoxRowActions>
+        <BoxRowContent>
+          <div style={{flex: 1}}>{content}</div>
+          <BoxRowActions>{actions}</BoxRowActions>
+        </BoxRowContent>
         {extra}
       </BoxRow>
     ))}

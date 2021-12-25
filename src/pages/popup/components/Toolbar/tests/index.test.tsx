@@ -21,14 +21,14 @@ describe('Toolbar component', () => {
     expect(element).toMatchSnapshot()
   })
 
-  test('expect to see changes to icons when click contributing link', () => {
+  test('expect to see changes to icons when click settings link', () => {
     render(<MemoryRouter><Toolbar /></MemoryRouter>)
-    const button = screen.getByRole('button', {name: /contributing/i})
-    const githubIcon = screen.getByRole('img', {name: /github/i})
+    const button = screen.getByRole('button', {name: /settings/i})
+    const githubIcon = screen.getByRole('img', {name: /more/i})
 
     expect(githubIcon).toBeTruthy()
     userEvent.click(button)
-    expect(mockHistoryPush).toHaveBeenCalledWith('/contributing')
+    expect(mockHistoryPush).toHaveBeenCalledWith('/settings')
 
     const homeIcon = screen.getByRole('img', {name: /home/i})
     expect(homeIcon).toBeTruthy()

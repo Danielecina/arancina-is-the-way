@@ -3,11 +3,21 @@ import {IntlProvider} from 'react-intl'
 
 import messages from '../strings'
 
-const IntlWrapper: React.FC = ({children}) => (
+type IntlWrapperType = {
+  defaultLocale?: string,
+  locale?: string,
+  messagesLocale?: string
+}
+const IntlWrapper: React.FC<IntlWrapperType> = ({
+  children,
+  defaultLocale = 'en',
+  locale = 'en',
+  messagesLocale = 'en'
+}) => (
   <IntlProvider
-    defaultLocale={'en'}
-    locale={'en'}
-    messages={messages.en}
+    defaultLocale={defaultLocale}
+    locale={locale}
+    messages={messages[messagesLocale]}
   >
     {children}
   </IntlProvider>
