@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react'
 import {Button, Tooltip} from 'antd'
 import {useHistory} from 'react-router-dom'
 import {useIntl} from 'react-intl'
-import {TrophyOutlined, GithubOutlined, HomeOutlined} from '@ant-design/icons'
+import {TrophyOutlined, HomeOutlined, MoreOutlined} from '@ant-design/icons'
 
 import './index.css'
 
@@ -11,7 +11,7 @@ const Toolbar: React.FC = () => {
   const history = useHistory()
   const onClick = useCallback(() => {
     if (!returnToHome) {
-      history.push('/contributing')
+      history.push('/settings')
       setReturnToHome(true)
       return
     }
@@ -37,8 +37,8 @@ const Toolbar: React.FC = () => {
       </div>
       <div className={'right'}>
         <Button
-          aria-label={'contributing'}
-          icon={!returnToHome ? <GithubOutlined /> : <HomeOutlined />}
+          aria-label={'settings'}
+          icon={!returnToHome ? <MoreOutlined /> : <HomeOutlined />}
           onClick={onClick}
           shape={'circle'}
           type={'primary'}

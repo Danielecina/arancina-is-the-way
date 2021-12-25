@@ -5,8 +5,10 @@ import {IntlProvider} from 'react-intl'
 
 import {RootState} from '../../store'
 import {SubstitutionReducer} from '../../store/reducers/substitution'
+import {LanguageReducer} from '../../store/reducers/language'
 import {toggleWatchModeMessage, substituteWords} from '../../store/actions/substitution'
-import Contributing from './components/Contributing'
+import {changeLanguage} from '../../store/actions/language'
+import Settings from './components/Settings'
 import Home from './components/Home'
 import Illustration from './components/Illustration'
 import Toolbar from './components/Toolbar'
@@ -14,10 +16,8 @@ import messages from '../../strings'
 
 import './index.css'
 
-const language = navigator.language.split(/[-_]/)[0]
-const translations = messages[language] ? messages[language] : messages.en
-
 const App: React.FC = () => {
+  const language: LanguageReducer = useSelector((state: RootState) => state.language)
   const substitution: SubstitutionReducer = useSelector((state: RootState) => state.substitution)
   const dispatch = useDispatch()
 
@@ -27,6 +27,10 @@ const App: React.FC = () => {
 
   const onSubstituteWords = useCallback(async () => {
     dispatch(await substituteWords())
+  }, [dispatch])
+
+  const onChangeLanguage = useCallback(async (selected, locale) => {
+    dispatch(await changeLanguage(selected, locale))
   }, [dispatch])
 
   const renderHome = useCallback(() => {
@@ -39,17 +43,25 @@ const App: React.FC = () => {
     )
   }, [onChangeWatchMode, onSubstituteWords, substitution?.watchMode])
 
+  const renderSettings = useCallback(() => {
+    return <Settings onChangeLanguage={onChangeLanguage} />
+  }, [onChangeLanguage])
+
+  const translations = messages[language.selected] ?
+    messages[language.selected] :
+    messages.en
+
   return (
     <IntlProvider
       defaultLocale={'en'}
-      locale={language}
+      locale={language.locale}
       messages={translations}
     >
       <div className={'app'}>
-        <Illustration watchMode={substitution?.watchMode} />
+        <Illustration watchMode={!!substitution?.watchMode} />
         <Toolbar />
         <Switch>
-          <Route component={Contributing} path={'/contributing'} />
+          <Route path={'/settings'} render={renderSettings} />
           <Route render={renderHome} />
         </Switch>
       </div>

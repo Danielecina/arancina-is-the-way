@@ -41,7 +41,7 @@ describe('App component', () => {
     const isHomePageText = 'Find and replace words'
     expect(screen.getByText(isHomePageText)).toBeInTheDocument()
 
-    const button = screen.getByRole('button', {name: /contributing/i})
+    const button = screen.getByRole('button', {name: /settings/i})
     userEvent.click(button)
 
     const isContributingPageText = 'Do you like extension?'

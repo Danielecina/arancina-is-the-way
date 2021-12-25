@@ -14,7 +14,8 @@
 
 .box .box-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto auto;
   align-items: center;
   gap: 12px;
 }
@@ -22,6 +23,8 @@
 .box .box-row--title {
   font-size: 22px;
   font-weight: 900;
+  display: flex;
+  align-items: center;
 }
 
 .box .box-row--actions {

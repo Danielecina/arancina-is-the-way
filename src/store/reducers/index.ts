@@ -1,7 +1,9 @@
 import substitution from './substitution'
+import language from './language'
 
 const reducers = {
-  substitution
+  substitution,
+  language
 }
 
 export default reducers
