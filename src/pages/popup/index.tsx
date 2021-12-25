@@ -5,7 +5,7 @@ import {IntlProvider} from 'react-intl'
 
 import {RootState} from '../../store'
 import {SubstitutionReducer} from '../../store/reducers/substitution'
-import {LanguageReducer} from '../../store/reducers/language'
+import {DEFAULT_LANGUAGE, LanguageReducer} from '../../store/reducers/language'
 import {toggleWatchModeMessage, substituteWords} from '../../store/actions/substitution'
 import {changeLanguage} from '../../store/actions/language'
 import Settings from './components/Settings'
@@ -15,6 +15,8 @@ import Toolbar from './components/Toolbar'
 import messages from '../../strings'
 
 import './index.css'
+
+const currentBrowserLocale = navigator.language.split(/[-_]/)[0]
 
 const App: React.FC = () => {
   const language: LanguageReducer = useSelector((state: RootState) => state.language)
@@ -29,8 +31,8 @@ const App: React.FC = () => {
     dispatch(await substituteWords())
   }, [dispatch])
 
-  const onChangeLanguage = useCallback(async (selected, locale) => {
-    dispatch(await changeLanguage(selected, locale))
+  const onChangeLanguage = useCallback(async (selected) => {
+    dispatch(await changeLanguage(selected))
   }, [dispatch])
 
   const renderHome = useCallback(() => {
@@ -47,15 +49,11 @@ const App: React.FC = () => {
     return <Settings onChangeLanguage={onChangeLanguage} />
   }, [onChangeLanguage])
 
-  const translations = messages[language.selected] ?
-    messages[language.selected] :
-    messages.en
-
   return (
     <IntlProvider
       defaultLocale={'en'}
-      locale={language.locale}
-      messages={translations}
+      locale={currentBrowserLocale}
+      messages={getMessages(language.selected)}
     >
       <div className={'app'}>
         <Illustration watchMode={!!substitution?.watchMode} />
@@ -70,3 +68,15 @@ const App: React.FC = () => {
 }
 
 export default App
+
+type getMessagesType = Record<string, string>
+function getMessages (selected: string): getMessagesType {
+  const isToDetectFromBrowser = selected === DEFAULT_LANGUAGE
+  const currentBrowserLanguage = navigator.language.split(/[-_]/)[0]
+
+  if (isToDetectFromBrowser) {
+    return messages[currentBrowserLanguage] || messages.en
+  }
+
+  return messages[selected] || messages.en
+}

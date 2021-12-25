@@ -3,7 +3,6 @@
 exports[`store expect to return correct store 1`] = `
 Object {
   "language": Object {
-    "locale": "en",
     "selected": "browser",
   },
   "substitution": Object {

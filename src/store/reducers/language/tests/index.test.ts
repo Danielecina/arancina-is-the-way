@@ -9,12 +9,11 @@ describe('language reducer', () => {
   })
 
   test('expect to reduce correctly when type is TOGGLE_WATCH_MODE', () => {
-    const payload = {selected: 'palermitano', locale: 'it'}
+    const payload = {selected: 'palermitano'}
     const action = {type: CHANGE_LANGUAGE, payload}
     const reduce = language(initialState, action)
     expect(reduce).toEqual({
-      selected: 'palermitano',
-      locale: 'it'
+      selected: 'palermitano'
     })
   })
 })

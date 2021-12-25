@@ -4,7 +4,7 @@ import {Button, Radio} from 'antd'
 import {useIntl} from 'react-intl'
 import {useSelector} from 'react-redux'
 
-import {LanguageReducer, DEFAULT_LANGUAGE, PALERMITANO} from '../../../../store/reducers/language'
+import {LanguageReducer, DEFAULT_LANGUAGE} from '../../../../store/reducers/language'
 import {RootState} from '../../../../store'
 import {createNewTab} from '../../../../lib/chromeUtils'
 import BoxList, {RowType} from '../BoxList'
@@ -13,18 +13,14 @@ import './index.css'
 export const URL: string = 'https://github.com/Danielecina/arancina-is-the-way'
 
 type SettingsType = {
-  onChangeLanguage: (selected: string, locale: string) => Promise<void>
+  onChangeLanguage: (selected: string) => Promise<void>
 }
 const Settings: React.FC<SettingsType> = ({onChangeLanguage}) => {
   const language: LanguageReducer = useSelector((state: RootState) => state.language)
   const {formatMessage} = useIntl()
-  const onChange = useCallback((event) => {
-    let locale: string = 'en'
-    if (event.target.value === PALERMITANO) {
-      locale = 'it'
-    }
 
-    return onChangeLanguage(event.target.value, locale)
+  const onChange = useCallback((event) => {
+    return onChangeLanguage(event.target.value)
   }, [onChangeLanguage])
 
   const rows: Array<RowType> = [
@@ -48,7 +44,6 @@ const Settings: React.FC<SettingsType> = ({onChangeLanguage}) => {
         <div className={'language-selector'}>
           <Radio.Group
             buttonStyle={'solid'}
-            defaultValue={language.selected}
             onChange={onChange}
             size={'small'}
             value={language.selected}

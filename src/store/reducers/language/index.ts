@@ -11,12 +11,10 @@ export const PALERMITANO: PalermitanoType = 'palermitano'
 
 export interface LanguageReducer {
   selected: DefaultLanguageType | SiculEnglishType | PalermitanoType
-  locale: 'en'| 'it'
 }
 
 export const initialState: LanguageReducer = {
-  selected: 'browser',
-  locale: 'en'
+  selected: 'browser'
 }
 
 const language = (
@@ -25,8 +23,8 @@ const language = (
 ): LanguageReducer => {
   switch (type) {
     case CHANGE_LANGUAGE: {
-      const {selected, locale} = payload
-      return {selected, locale}
+      const {selected} = payload
+      return {selected}
     }
     default: {
       return state

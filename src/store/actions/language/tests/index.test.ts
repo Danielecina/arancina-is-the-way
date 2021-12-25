@@ -4,10 +4,9 @@ test('expect to call changeLanguage correctly', () => {
   const expectedAction = {
     type: CHANGE_LANGUAGE,
     payload: {
-      selected: 'siculEnglish',
-      locale: 'en'
+      selected: 'siculEnglish'
     }
   }
-  const ret = changeLanguage('siculEnglish', 'en')
+  const ret = changeLanguage('siculEnglish')
   expect(ret).toEqual(expectedAction)
 })

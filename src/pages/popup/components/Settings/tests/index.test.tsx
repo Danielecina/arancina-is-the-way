@@ -9,15 +9,14 @@ import * as chromeUtils from '../../../../../lib/chromeUtils'
 
 const mockState = {
   language: {
-    selected: 'palermitano',
-    locale: 'it'
+    selected: 'palermitano'
   }
 }
 
 const onChangeLanguage = jest.fn()
 const element = (
   <MockProvider initialEntries={['/settings']} mockState={mockState}>
-    <IntlWrapper locale={mockState.language.locale} messagesLocale={mockState.language.selected}>
+    <IntlWrapper messagesLocale={mockState.language.selected}>
       <SettingsComponent onChangeLanguage={onChangeLanguage} />
     </IntlWrapper>
   </MockProvider>
@@ -49,6 +48,6 @@ describe('Settings component', () => {
     expect(radioButtonPalermoElement).toMatch(/ant-radio-button-wrapper-checked/gm)
 
     userEvent.click(screen.getByRole('radio', {name: 'Sicul-english'}))
-    expect(onChangeLanguage).toHaveBeenCalledWith('siculEnglish', 'en')
+    expect(onChangeLanguage).toHaveBeenCalledWith('siculEnglish')
   })
 })
