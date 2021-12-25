@@ -1,11 +1,12 @@
 import React, {useCallback, useState} from 'react'
 import {Button, Tooltip} from 'antd'
 import {useHistory} from 'react-router-dom'
+import {useIntl} from 'react-intl'
 import {TrophyOutlined, GithubOutlined, HomeOutlined} from '@ant-design/icons'
 
 import './index.css'
 
-export default function Toolbar () {
+const Toolbar: React.FC = () => {
   const [returnToHome, setReturnToHome] = useState(false)
   const history = useHistory()
   const onClick = useCallback(() => {
@@ -48,4 +49,9 @@ export default function Toolbar () {
 }
 
 const tooltipStyle = {fontWeight: 900}
-const TooltipInfo = <span style={tooltipStyle}>{'Coming soon'}</span>
+export const TooltipInfo: React.FC = () => {
+  const {formatMessage} = useIntl()
+  return <span style={tooltipStyle}>{formatMessage({id: 'comingSoon'})}</span>
+}
+
+export default Toolbar

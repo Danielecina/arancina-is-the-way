@@ -2,8 +2,15 @@ import React from 'react'
 import {render, screen} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import Contributing, {URL} from '..'
+import IntlWrapper from '../../../../../testUtilies/intlWrapper'
+import ContributingComponent, {URL} from '..'
 import * as chromeUtils from '../../../../../lib/chromeUtils'
+
+const Contributing: React.FC = () => (
+  <IntlWrapper>
+    <ContributingComponent />
+  </IntlWrapper>
+)
 
 describe('Contributing component', () => {
   test('expect to click action', () => {

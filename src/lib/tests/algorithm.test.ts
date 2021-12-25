@@ -109,7 +109,7 @@ describe('wordReplacerAlgorithm', () => {
   })
 })
 
-function appendChildren (element: Element, lastChild: Element, count: number) {
+function appendChildren (element: Element, lastChild: Element, count: number): void {
   let isFirstRun = true
   while (count > 0) {
     const node = document.createElement('div')

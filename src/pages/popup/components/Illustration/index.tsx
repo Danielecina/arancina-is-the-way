@@ -1,5 +1,4 @@
 import React, {useCallback} from 'react'
-import PropTypes from 'prop-types'
 
 import {ReactComponent as FryingPan} from '../../../../assets/svgs/fryingPan.svg'
 import {ReactComponent as AuraEffect} from '../../../../assets/svgs/aura.svg'
@@ -7,10 +6,7 @@ import {ReactComponent as Arancina} from '../../../../assets/svgs/arancina.svg'
 
 import './index.css'
 
-Illustration.propTypes = {
-  watchMode: PropTypes.bool
-}
-export default function Illustration ({watchMode}) {
+const Illustration: React.FC<{watchMode: boolean}> = ({watchMode}) => {
   const onFire = useCallback((name) => {
     return watchMode ? `${name} on-fire` : name
   }, [watchMode])
@@ -23,3 +19,5 @@ export default function Illustration ({watchMode}) {
     </div>
   )
 }
+
+export default Illustration

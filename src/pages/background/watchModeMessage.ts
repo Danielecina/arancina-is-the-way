@@ -1,7 +1,7 @@
 import {sendMessage} from '../../lib/chromeUtils'
 import {TOGGLE_WATCH_MODE} from '../../store/actions/substitution'
 
-export default async function watchModeMessage (store) {
+export default async function watchModeMessage (store): Promise<void> {
   if (!store?.substitution?.watchMode) return
 
   await sendMessage({

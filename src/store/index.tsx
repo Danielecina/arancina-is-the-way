@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createStore, combineReducers, applyMiddleware, Store} from 'redux'
 
 import reducers from './reducers'
 
@@ -14,7 +14,7 @@ export const persistedState: () => Record<string, any> = async () => {
   })
 }
 
-export const promiseStore = async () => {
+export const promiseStore: () => Promise<Store> = async () => {
   const persisted = await persistedState()
   const saveDataToChromeStorage = store => next => action => {
     const result = next(action)

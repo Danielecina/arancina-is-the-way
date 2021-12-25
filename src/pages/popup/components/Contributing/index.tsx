@@ -1,18 +1,19 @@
 import React from 'react'
 import {StarOutlined} from '@ant-design/icons'
 import {Button} from 'antd'
+import {useIntl} from 'react-intl'
 
-import BoxList from '../BoxList'
+import BoxList, {RowType} from '../BoxList'
 import {createNewTab} from '../../../../lib/chromeUtils'
 
-export const URL = 'https://github.com/Danielecina/arancina-is-the-way'
-
-export default function Contributing () {
-  const rows = [
+export const URL: string = 'https://github.com/Danielecina/arancina-is-the-way'
+const Contributing: React.FC = () => {
+  const {formatMessage} = useIntl()
+  const rows: Array<RowType> = [
     {
       id: 'github',
-      content: 'Do you like extension?',
-      extra: 'Support arancina on GitHub',
+      content: formatMessage({id: 'contributing.content'}),
+      extra: formatMessage({id: 'contributing.extra'}),
       actions: (
         <Button
           icon={<StarOutlined />}
@@ -23,6 +24,7 @@ export default function Contributing () {
       )
     }
   ]
-
   return <BoxList rows={rows} />
 }
+
+export default Contributing

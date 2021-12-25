@@ -1,30 +1,34 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {useIntl} from 'react-intl'
 import {Button, Switch} from 'antd'
 import {SearchOutlined} from '@ant-design/icons'
 
 import BoxList from '../BoxList'
 
-Home.propTypes = {
-  onChangeWatchMode: PropTypes.func.isRequired,
-  onSubstituteWords: PropTypes.func.isRequired,
-  watchMode: PropTypes.bool
+type HomeType = {
+  onChangeWatchMode: (value: any) => Promise<void>,
+  onSubstituteWords: () => Promise<void>,
+  watchMode?: boolean
 }
-export default function Home ({watchMode, onChangeWatchMode, onSubstituteWords}) {
+
+const Home: React.FC<HomeType> = ({watchMode, onChangeWatchMode, onSubstituteWords}) => {
+  const {formatMessage} = useIntl()
   const rows = [
     {
       id: 'find',
-      content: 'Find and replace words',
+      content: formatMessage({id: 'home.findAndReplace'}),
       actions: <Button icon={<SearchOutlined />} onClick={onSubstituteWords} shape={'circle'} type={'primary'} />,
-      extra: <small>{'Find all reference and replace with our correct words'}</small>
+      extra: <small>{formatMessage({id: 'home.findAndReplace.description'})}</small>
     },
     {
       id: 'auto-replacer',
-      content: 'Auto replacer',
+      content: formatMessage({id: 'home.autoReplace'}),
       actions: <Switch checked={watchMode} onChange={onChangeWatchMode} />,
-      extra: <small>{'If activated, this feature will take care of replacing all words automatically'}</small>
+      extra: <small>{formatMessage({id: 'home.autoReplace.description'})}</small>
     }
   ]
 
   return <BoxList rows={rows} />
 }
+
+export default Home

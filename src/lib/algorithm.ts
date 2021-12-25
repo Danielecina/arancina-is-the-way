@@ -2,7 +2,7 @@ import wordListToRewrite from './wordListToRewrite'
 import nodeTypeToEvaluate from './nodeTypeToEvaluate'
 import {hasSomeWrongWord} from './preChecks'
 
-export function capitalizeFirstLetter (string) {
+export function capitalizeFirstLetter (string): string {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
