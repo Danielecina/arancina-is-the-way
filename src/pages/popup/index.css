@@ -11,3 +11,11 @@
   padding: 24px;
   width: 100%;
 }
+
+
+/*⁄ ANTD reset */
+.app .ant-switch-checked:focus {
+  box-shadow: none !important;
+}
+
+/*⁄ EMD ANTD reset */
