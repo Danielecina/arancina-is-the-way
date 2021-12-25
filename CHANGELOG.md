@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added 
 
 - Added i18n
+- Added palermitano language support
+- Added siculenglish language support
 
 ## v1.0.1 23/12/2021
 
