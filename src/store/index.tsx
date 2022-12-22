@@ -1,3 +1,5 @@
+// eslint-disable n/no-callback-literal
+
 import {createStore, combineReducers, applyMiddleware, Store} from 'redux'
 
 import reducers from './reducers'

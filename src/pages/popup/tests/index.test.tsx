@@ -32,7 +32,7 @@ describe('App component', () => {
     expect(header).toBeTruthy()
   })
 
-  test('expect to render correctly pages on navigation', () => {
+  test('expect to render correctly pages on navigation', async () => {
     render(
       <MockProvider initialEntries={['/']} mockState={mockState}>
         <App />
@@ -45,6 +45,6 @@ describe('App component', () => {
     userEvent.click(button)
 
     const isContributingPageText = 'Do you like extension?'
-    expect(screen.getByText(isContributingPageText)).toBeInTheDocument()
+    expect(await screen.findByText(isContributingPageText)).toBeInTheDocument()
   })
 })

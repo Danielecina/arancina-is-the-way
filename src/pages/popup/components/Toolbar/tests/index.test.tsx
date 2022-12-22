@@ -1,7 +1,7 @@
 import React from 'react'
 import {MemoryRouter} from 'react-router-dom'
 import renderer from 'react-test-renderer'
-import {render, screen} from '@testing-library/react'
+import {render, screen, waitFor} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import IntlWrapper from '../../../../../testUtilies/intlWrapper'
@@ -21,20 +21,23 @@ describe('Toolbar component', () => {
     expect(element).toMatchSnapshot()
   })
 
-  test('expect to see changes to icons when click settings link', () => {
+  test('expect to see changes to icons when click settings link', async () => {
     render(<MemoryRouter><Toolbar /></MemoryRouter>)
     const button = screen.getByRole('button', {name: /settings/i})
     const githubIcon = screen.getByRole('img', {name: /more/i})
 
     expect(githubIcon).toBeTruthy()
     userEvent.click(button)
-    expect(mockHistoryPush).toHaveBeenCalledWith('/settings')
+    await waitFor(() => {
+      expect(mockHistoryPush).toHaveBeenCalledWith('/settings')
+    })
 
-    const homeIcon = screen.getByRole('img', {name: /home/i})
-    expect(homeIcon).toBeTruthy()
+    await screen.findByRole('img', {name: /home/i})
 
     userEvent.click(button)
-    expect(mockHistoryPush).toHaveBeenCalledWith('/')
+    await waitFor(() => {
+      expect(mockHistoryPush).toHaveBeenCalledWith('/')
+    })
   })
 
   test('expect to see correct TooltipInfo', () => {

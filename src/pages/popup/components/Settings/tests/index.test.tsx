@@ -1,5 +1,5 @@
 import React from 'react'
-import {render, screen} from '@testing-library/react'
+import {fireEvent, render, screen, waitFor} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import IntlWrapper from '../../../../../testUtilies/intlWrapper'
@@ -25,17 +25,20 @@ const element = (
 describe('Settings component', () => {
   beforeEach(() => jest.clearAllMocks())
 
-  test('expect to click action', () => {
+  test('expect to click action', async () => {
     const createNewTab = jest.fn((url) => url)
     jest.spyOn(chromeUtils, 'createNewTab').mockImplementation(createNewTab)
 
     render(element)
-    userEvent.click(screen.getByRole('button'))
-    expect(createNewTab).toHaveBeenCalledTimes(1)
-    expect(createNewTab).toHaveBeenCalledWith(URL)
+    userEvent.click(screen.getByRole('button', {name: /github/i}))
+
+    await waitFor(() => {
+      expect(createNewTab).toHaveBeenCalledTimes(1)
+      expect(createNewTab).toHaveBeenCalledWith(URL)
+    })
   })
 
-  test('expect to change language', () => {
+  test('expect to change language', async () => {
     render(element)
 
     const radioGroup = document.querySelector('.ant-radio-group')
@@ -47,7 +50,8 @@ describe('Settings component', () => {
     const radioButtonPalermoElement = radioGroup?.lastChild.className
     expect(radioButtonPalermoElement).toMatch(/ant-radio-button-wrapper-checked/gm)
 
-    userEvent.click(screen.getByRole('radio', {name: 'Sicul-english'}))
+    fireEvent.click(await screen.findByRole('radio', {name: 'Sicul-english'}))
+    expect(onChangeLanguage).toHaveBeenCalledTimes(1)
     expect(onChangeLanguage).toHaveBeenCalledWith('siculEnglish')
   })
 })

@@ -21,6 +21,6 @@ export const sendMessage = async (message: ChromeMessage): Promise<any> => {
       return
     }
 
-    chrome.tabs.sendMessage(tabId, message, {}, resolve)
+    chrome.tabs.sendMessage(tabId, message, resolve)
   })
 }

@@ -16,11 +16,10 @@ describe('getCurrentTabUId', () => {
 
 describe('sendMessage', () => {
   test('expect to return correct response', async () => {
-    chrome.tabs.sendMessage.mockImplementation(
-      (tabId, message, options, callback: any) => {
-        callback({message: 'fix words completed'})
-      }
-    )
+    const fn = async (tabId: number, message: unknown, responseCallback): Promise<void> => {
+      responseCallback({message: 'fix words completed'})
+    }
+    chrome.tabs.sendMessage.mockImplementation(fn)
 
     const ret = await sendMessage({type: 'TYPE'})
     expect(chrome.tabs.sendMessage).toHaveBeenCalledTimes(1)
@@ -30,7 +29,7 @@ describe('sendMessage', () => {
 
 describe('createNewTab', () => {
   test('expect to return correct response', async () => {
-    chrome.tabs.create.mockImplementation(({url}, callback: any) => {
+    chrome.tabs.create.mockImplementation((url, callback: any) => {
       callback()
     })
 

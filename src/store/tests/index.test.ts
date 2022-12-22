@@ -4,8 +4,8 @@ import {promiseStore} from '..'
 
 describe('store', () => {
   test('expect to return correct store', async () => {
-    chrome.storage.sync.get.mockImplementation((key, callback) => {
-      callback({})
+    chrome.storage.sync.get.mockImplementation((key, resolveCallback) => {
+      resolveCallback({})
     })
 
     const store = await promiseStore()
@@ -13,8 +13,8 @@ describe('store', () => {
   })
 
   test('expect to correct saving data to chrome storage', async () => {
-    chrome.storage.sync.get.mockImplementation((key, callback) => {
-      callback({substitution: {watchMode: true}})
+    chrome.storage.sync.get.mockImplementation((key, resolveCallback) => {
+      resolveCallback({substitution: {watchMode: true}})
     })
 
     const dataSendToChromeStorage = jest.fn()

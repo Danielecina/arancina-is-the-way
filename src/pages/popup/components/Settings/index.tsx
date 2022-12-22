@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react'
+import React from 'react'
 import {GithubOutlined} from '@ant-design/icons'
 import {Button, Radio} from 'antd'
 import {useIntl} from 'react-intl'
@@ -18,10 +18,6 @@ type SettingsType = {
 const Settings: React.FC<SettingsType> = ({onChangeLanguage}) => {
   const language: LanguageReducer = useSelector((state: RootState) => state.language)
   const {formatMessage} = useIntl()
-
-  const onChange = useCallback((event) => {
-    return onChangeLanguage(event.target.value)
-  }, [onChangeLanguage])
 
   const rows: Array<RowType> = [
     {
@@ -44,7 +40,7 @@ const Settings: React.FC<SettingsType> = ({onChangeLanguage}) => {
         <div className={'language-selector'}>
           <Radio.Group
             buttonStyle={'solid'}
-            onChange={onChange}
+            onChange={(event) => onChangeLanguage(event.target.value)}
             size={'small'}
             value={language.selected}
           >

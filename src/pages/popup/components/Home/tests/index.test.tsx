@@ -1,7 +1,5 @@
 import React from 'react'
-import {render, screen} from '@testing-library/react'
-import renderer from 'react-test-renderer'
-import userEvent from '@testing-library/user-event'
+import {fireEvent, render, screen} from '@testing-library/react'
 
 import IntlWrapper from '../../../../../testUtilies/intlWrapper'
 import HomeComponent from '..'
@@ -20,19 +18,19 @@ const Home: React.FC = () => (
 
 describe('Home', () => {
   test('snapshot', () => {
-    const element = renderer.create(<Home />).toJSON()
-    expect(element).toMatchSnapshot()
+    const {container} = render(<Home />)
+    expect(container).toMatchSnapshot()
   })
 
-  test('expect to call onChangeWatchMode', () => {
+  test('expect to call onChangeWatchMode', async () => {
     render(<Home />)
-    userEvent.click(screen.getByRole('button'))
+    fireEvent.click(await screen.findByRole('button'))
     expect(props.onSubstituteWords).toHaveBeenCalledTimes(1)
   })
 
-  test('expect to call onSubstituteWords', () => {
+  test('expect to call onSubstituteWords', async () => {
     render(<Home />)
-    userEvent.click(screen.getByRole('switch'))
+    fireEvent.click(await screen.findByRole('switch'))
     expect(props.onChangeWatchMode).toHaveBeenCalledTimes(1)
   })
 })

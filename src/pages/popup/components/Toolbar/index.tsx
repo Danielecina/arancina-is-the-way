@@ -25,7 +25,7 @@ const Toolbar: React.FC = () => {
         <Tooltip
           color={'hsla(0,0%,100%,.2)'}
           placement={'right'}
-          title={TooltipInfo}
+          title={<TooltipInfo />}
         >
           <Button
             icon={<TrophyOutlined />}

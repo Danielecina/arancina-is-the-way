@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {ReactNode} from 'react'
 import {IntlProvider} from 'react-intl'
 
 import messages from '../strings'
 
 type IntlWrapperType = {
+  children: ReactNode,
   defaultLocale?: string,
   locale?: string,
   messagesLocale?: string

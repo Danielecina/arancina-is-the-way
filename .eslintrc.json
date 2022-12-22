@@ -1,22 +1,7 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest": true,
-        "webextensions": true
-    },
-    "globals": {
-        "jsx": true
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
     "extends": [
-        "plugin:jsx-a11y/recommended",
-        "plugin:react/recommended",
-        "standard"
+      "standard",
+      "plugin:react/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -31,17 +16,31 @@
         "react-hooks",
         "@typescript-eslint"
     ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest": true,
+        "webextensions": true
+    },
+    "globals": {
+        "jsx": true
+    },
     "rules": {
         "import/order": [
             2,
             {
-                "groups": [
-                    [
-                        "builtin",
-                        "external"
-                    ]
-                ],
-                "newlines-between": "always"
+            "groups": [
+                [
+                    "builtin",
+                    "external"
+                ]
+            ],
+            "newlines-between": "always"
             }
         ],
         "no-console": 2,
@@ -51,8 +50,8 @@
             "never"
         ],
         "operator-linebreak": [
-            2,
-            "after"
+          2,
+          "after"
         ],
         "react/display-name": 0,
         "react/jsx-closing-bracket-location": 2,
@@ -96,9 +95,9 @@
                 ]
             }
         ],
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": "off",
-        "@typescript-eslint/explicit-function-return-type": [
+       "no-use-before-define": "off",
+       "@typescript-eslint/no-use-before-define": "off",
+       "@typescript-eslint/explicit-function-return-type": [
             "error",
             {
                 "allowExpressions": true
@@ -110,3 +109,4 @@
         "import/prefer-default-export": "off"
     }
 }
+  

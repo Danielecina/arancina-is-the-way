@@ -20,7 +20,8 @@ exports[`Toolbar component snapshot 1`] = `
     className="left"
   >
     <button
-      className="ant-btn ant-btn-primary ant-btn-circle ant-btn-icon-only"
+      className="ant-btn ant-btn-circle ant-btn-primary ant-btn-icon-only"
+      disabled={false}
       onClick={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
@@ -52,7 +53,8 @@ exports[`Toolbar component snapshot 1`] = `
   >
     <button
       aria-label="settings"
-      className="ant-btn ant-btn-primary ant-btn-circle ant-btn-icon-only"
+      className="ant-btn ant-btn-circle ant-btn-primary ant-btn-icon-only"
+      disabled={false}
       onClick={[Function]}
       type="button"
     >

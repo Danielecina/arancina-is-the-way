@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ReactNode} from 'react'
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router-dom'
 import {combineReducers, createStore, Store} from 'redux'
@@ -13,7 +13,8 @@ export function store (mockState): Store {
 
 type MockProviderType = {
   initialEntries: Array<string>,
-  mockState: Record<string, unknown>
+  mockState: Record<string, unknown>,
+  children: ReactNode
 }
 
 const MockProvider: React.FC<MockProviderType> = ({mockState, initialEntries, children}) => {
