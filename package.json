@@ -22,7 +22,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/chrome": "0.0.206",
     "@types/jest": "^29.2.4",
-    "@types/node": "^17.0.23",
+    "@types/node": "^18.15.2",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^17.0.14",
     "@types/react-intl": "^3.0.0",
